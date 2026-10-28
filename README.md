@@ -78,5 +78,14 @@ Cada push a `main` ejecuta el workflow `Deploy portfolio to GitHub Pages`, que c
 
 ## Plan de trabajo
 
-El plan de acción vive en [`PLAN.md`](PLAN.md) y se gestiona como tablero de GitHub
-Projects con issues etiquetados por área, prioridad y semana.
+El plan de acción vive en [`PLAN.md`](PLAN.md) y se gestiona en el tablero
+[Lanzamiento freelance](https://github.com/users/carturitos/projects/2) de GitHub
+Projects, con 31 issues etiquetados por área, prioridad y semana.
+
+Guías de apoyo:
+
+- [Perfil de Workana](docs/workana.md)
+- [Propuestas y seguimiento](docs/propuestas.md)
+- [Precios y condiciones](docs/precios.md)
+- [Primer cliente: entrega y reseña](docs/primer-cliente.md)
+- [Cómo editar y publicar el sitio](docs/github-pages.md)
