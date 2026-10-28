@@ -19,7 +19,7 @@ export const services: Service[] = [
     description:
       'Una página, un objetivo: que quien te visite te escriba o te compre. Diseño propio, textos ordenados y botón de WhatsApp siempre a mano.',
     price: '$149.000',
-    priceNote: 'CLP · pago único',
+    priceNote: 'CLP · referencial',
     delivery: '5 a 7 días',
     includes: [
       'Diseño a medida, sin plantillas',
@@ -35,8 +35,8 @@ export const services: Service[] = [
     title: 'Sitio web para tu negocio',
     description:
       'Hasta 5 secciones para mostrar servicios, precios, ubicación, equipo y todo lo que un cliente necesita saber antes de elegirte.',
-    price: '$279.000',
-    priceNote: 'CLP · pago único',
+    price: '$249.000',
+    priceNote: 'CLP · referencial',
     delivery: '10 a 14 días',
     includes: [
       'Estructura y contenidos guiados',
@@ -52,7 +52,7 @@ export const services: Service[] = [
     description:
       'Registro, inicio de sesión, recuperación de contraseña y permisos por rol. Construido con NestJS, JWT y PostgreSQL siguiendo buenas prácticas de seguridad.',
     price: '$449.000',
-    priceNote: 'CLP · desde',
+    priceNote: 'CLP · referencial',
     delivery: '2 a 3 semanas',
     includes: [
       'Contraseñas con hash (bcrypt/argon2)',
@@ -68,7 +68,7 @@ export const services: Service[] = [
     description:
       'Deja de manejar todo en planillas. Un panel para crear, editar y buscar productos, clientes, reservas o inventario, con base de datos real.',
     price: '$399.000',
-    priceNote: 'CLP · desde',
+    priceNote: 'CLP · referencial',
     delivery: '2 a 3 semanas',
     includes: [
       'CRUD completo con validaciones',
@@ -84,7 +84,7 @@ export const services: Service[] = [
     description:
       'Reviso formularios, autenticación, permisos y configuración de tu sitio o app, y te entrego un informe claro con lo que hay que corregir y cómo.',
     price: '$119.000',
-    priceNote: 'CLP · por revisión',
+    priceNote: 'CLP · referencial',
     delivery: '3 a 5 días',
     includes: [
       'Informe con prioridades',
@@ -100,7 +100,7 @@ export const services: Service[] = [
     description:
       'Tu web al día: respaldos, actualizaciones, pequeños cambios de contenido y monitoreo. Ideal si no quieres preocuparte de nada técnico.',
     price: '$39.000',
-    priceNote: 'CLP · al mes',
+    priceNote: 'CLP · al mes · referencial',
     delivery: 'Mensual',
     includes: [
       'Cambios menores incluidos',

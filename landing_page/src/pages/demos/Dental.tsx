@@ -1,4 +1,7 @@
-import { DemoBadge } from '../../components/DemoBadge'
+import { useState } from 'react'
+import { DemoNotice } from '../../components/DemoNotice'
+import { contactHref } from '../../config/site'
+import { usePageMeta } from '../../hooks/usePageMeta'
 import './dental.css'
 
 const treatments = [
@@ -55,22 +58,32 @@ const team = [
 const reviews = [
   {
     text: 'Me explicaron cada paso antes de empezar. Salí sabiendo qué tenía y cuánto iba a costar.',
-    author: 'Javiera M.',
+    author: 'Paciente de ejemplo',
   },
   {
     text: 'Llegué con dolor y me atendieron el mismo día. El trato fue increíble.',
-    author: 'Rodrigo A.',
+    author: 'Paciente de ejemplo',
   },
   {
     text: 'Llevo el tratamiento de ortodoncia de mi hija acá. Puntuales y muy claros con los pagos.',
-    author: 'Paula C.',
+    author: 'Paciente de ejemplo',
   },
 ]
 
 export function Dental() {
+  const [selectedDay, setSelectedDay] = useState(1)
+
+  usePageMeta({
+    title: 'Dental Aurora — Demo de clínica dental | Samuel Gutiérrez',
+    description:
+      'Proyecto demostrativo de sitio para clínica dental: tratamientos, equipo y agenda. Negocio y contenido ficticios.',
+    path: '/demos/dental',
+  })
+
   return (
     <div className="da">
       <header className="da-nav">
+        <DemoNotice />
         <div className="da-wrap da-nav-inner">
           <a className="da-logo" href="#inicio">
             <span className="da-logo-mark" aria-hidden="true">
@@ -90,7 +103,7 @@ export function Dental() {
         </div>
       </header>
 
-      <main>
+      <main id="contenido">
         <section className="da-hero" id="inicio">
           <div className="da-wrap da-hero-grid">
             <div className="da-copy">
@@ -141,7 +154,9 @@ export function Dental() {
                   <button
                     type="button"
                     key={d.day}
-                    className={`da-day${i === 1 ? ' is-active' : ''}`}
+                    className={`da-day${selectedDay === i ? ' is-active' : ''}`}
+                    aria-pressed={selectedDay === i}
+                    onClick={() => setSelectedDay(i)}
                   >
                     <span>{d.day}</span>
                     <strong>{d.date}</strong>
@@ -149,27 +164,21 @@ export function Dental() {
                 ))}
               </div>
               <a className="da-btn da-btn-full" href="#contacto">
-                Confirmar por WhatsApp
+                Continuar
               </a>
-              <p className="da-card-note">Te confirmamos en menos de 15 minutos.</p>
-              <div className="da-rating">
-                <span className="da-stars" aria-hidden="true">
-                  ★★★★★
-                </span>
-                <strong>4,9</strong>
-                <span>240 reseñas en Google</span>
-              </div>
+              <p className="da-card-note">Selección de ejemplo: no reserva una hora real.</p>
+              <p className="da-card-note demo-note">
+                Agenda, precios y reseñas son contenido ficticio de esta demostración.
+              </p>
             </div>
           </div>
         </section>
 
         <section className="da-strip">
           <div className="da-wrap da-strip-inner">
-            <span>Convenios con</span>
-            <strong>Isapre Consalud</strong>
-            <strong>Colmena</strong>
-            <strong>Cruz Blanca</strong>
-            <strong>Fonasa</strong>
+            <span>Convenios de ejemplo</span>
+            <strong>Isapres</strong>
+            <strong>Pago en cuotas</strong>
           </div>
         </section>
 
@@ -178,7 +187,7 @@ export function Dental() {
             <header className="da-head">
               <span className="da-eyebrow">Tratamientos</span>
               <h2>Todo lo que necesitas, en un solo lugar.</h2>
-              <p>Precios de referencia. El presupuesto final depende de tu evaluación.</p>
+              <p>Precios de ejemplo. El presupuesto final depende de tu evaluación.</p>
             </header>
             <div className="da-grid">
               {treatments.map((t) => (
@@ -217,7 +226,7 @@ export function Dental() {
           <div className="da-wrap">
             <header className="da-head">
               <span className="da-eyebrow">Equipo</span>
-              <h2>Especialistas que escuchan.</h2>
+              <h2>Equipo de ejemplo.</h2>
             </header>
             <div className="da-team">
               {team.map((person) => (
@@ -234,15 +243,13 @@ export function Dental() {
         <section className="da-section da-soft">
           <div className="da-wrap">
             <header className="da-head">
-              <span className="da-eyebrow">Testimonios</span>
-              <h2>Lo que dicen nuestros pacientes.</h2>
+              <span className="da-eyebrow">Contenido de ejemplo</span>
+              <h2>Testimonios de ejemplo.</h2>
             </header>
             <div className="da-reviews">
               {reviews.map((r) => (
-                <blockquote className="da-review" key={r.author}>
-                  <span className="da-stars" aria-hidden="true">
-                    ★★★★★
-                  </span>
+                <blockquote className="da-review" key={r.text}>
+                  <span className="demo-example">Ejemplo</span>
                   <p>“{r.text}”</p>
                   <footer>{r.author}</footer>
                 </blockquote>
@@ -260,9 +267,17 @@ export function Dental() {
                 Escríbenos por WhatsApp o déjanos tus datos. Coordinamos una hora que te acomode y
                 te entregamos el presupuesto en la misma visita.
               </p>
-              <a className="da-btn da-btn-light" href="#inicio">
-                Escribir por WhatsApp
+              <a
+                className="da-btn da-btn-light"
+                href={contactHref(
+                  'Hola Samuel, vi la demo de Dental Aurora y quiero una web similar para mi negocio.',
+                )}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Quiero una web así
               </a>
+              <p className="demo-note">Sitio de demostración: no agenda horas reales.</p>
             </div>
             <div className="da-info">
               <div>
@@ -275,7 +290,7 @@ export function Dental() {
               </div>
               <div>
                 <span>Teléfono</span>
-                <strong>+56 2 2345 6789</strong>
+                <strong>Dato de ejemplo</strong>
               </div>
               <div>
                 <span>Estacionamiento</span>
@@ -297,8 +312,6 @@ export function Dental() {
           <p>© {new Date().getFullYear()} Dental Aurora. Sitio de demostración.</p>
         </div>
       </footer>
-
-      <DemoBadge />
     </div>
   )
 }

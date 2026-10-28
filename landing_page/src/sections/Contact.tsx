@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { contactHref, hasWhatsapp, site } from '../config/site'
 import { Reveal } from '../components/Reveal'
-import { ArrowUpRight, Clock, Mail, MapPin, WhatsApp } from '../components/Icons'
+import { ArrowUpRight, Check, Clock, Mail, MapPin, WhatsApp } from '../components/Icons'
 
 const serviceOptions = [
   'Landing page',
@@ -15,6 +15,17 @@ const serviceOptions = [
 
 export function Contact() {
   const [sent, setSent] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(site.email)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2500)
+    } catch {
+      setCopied(false)
+    }
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -35,7 +46,7 @@ export function Contact() {
 
     const url = contactHref(lines.join(' '))
     if (hasWhatsapp) {
-      window.open(url, '_blank', 'noopener')
+      window.open(url, '_blank', 'noopener,noreferrer')
     } else {
       window.location.href = url
     }
@@ -67,6 +78,13 @@ export function Contact() {
               <Mail size={18} />
               {site.email}
             </a>
+            <button type="button" className="btn btn-outline-light btn-sm copy-button" onClick={copyEmail}>
+              {copied ? <Check size={16} /> : <Mail size={16} />}
+              {copied ? 'Correo copiado' : 'Copiar correo'}
+            </button>
+            <span className="visually-hidden" role="status">
+              {copied ? 'Correo copiado al portapapeles' : ''}
+            </span>
           </div>
 
           <ul className="contact-meta">
@@ -92,18 +110,37 @@ export function Contact() {
             <div className="form-row">
               <div className="field">
                 <label htmlFor="nombre">Tu nombre</label>
-                <input id="nombre" name="nombre" type="text" placeholder="Ana Pérez" required />
+                <input
+                  id="nombre"
+                  name="nombre"
+                  type="text"
+                  placeholder="Ana Pérez"
+                  autoComplete="name"
+                  required
+                />
               </div>
               <div className="field">
                 <label htmlFor="negocio">Tu negocio</label>
-                <input id="negocio" name="negocio" type="text" placeholder="Barbería, clínica, tienda…" />
+                <input
+                  id="negocio"
+                  name="negocio"
+                  type="text"
+                  placeholder="Barbería, clínica, tienda…"
+                  autoComplete="organization"
+                />
               </div>
             </div>
 
             <div className="form-row">
               <div className="field">
                 <label htmlFor="contacto">Email o teléfono</label>
-                <input id="contacto" name="contacto" type="text" placeholder="ana@correo.cl" />
+                <input
+                  id="contacto"
+                  name="contacto"
+                  type="text"
+                  placeholder="ana@correo.cl"
+                  autoComplete="email"
+                />
               </div>
               <div className="field">
                 <label htmlFor="servicio">Qué necesitas</label>
@@ -132,17 +169,19 @@ export function Contact() {
               <ArrowUpRight size={17} />
             </button>
 
-            {sent ? (
-              <p className="form-success">
-                ¡Listo! Se abrió tu correo o WhatsApp con el mensaje preparado. Si no ocurrió nada,
-                escríbeme directo a {site.email}.
-              </p>
-            ) : (
-              <p className="form-note">
-                Se abrirá tu correo o WhatsApp con el mensaje listo para enviar. Este sitio no
-                guarda datos personales.
-              </p>
-            )}
+            <div className="form-status" aria-live="polite">
+              {sent ? (
+                <p className="form-success">
+                  ¡Listo! Se abrió {hasWhatsapp ? 'WhatsApp' : 'tu correo'} con el mensaje
+                  preparado. Si no ocurrió nada, escríbeme directo a {site.email}.
+                </p>
+              ) : (
+                <p className="form-note">
+                  Se abrirá {hasWhatsapp ? 'WhatsApp' : 'tu correo'} con el mensaje listo para
+                  enviar. Este sitio no guarda datos personales.
+                </p>
+              )}
+            </div>
           </form>
         </Reveal>
       </div>

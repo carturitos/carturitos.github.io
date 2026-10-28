@@ -7,6 +7,7 @@ import { Process } from '../sections/Process'
 import { About } from '../sections/About'
 import { Faq } from '../sections/Faq'
 import { Contact } from '../sections/Contact'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const tech = [
   'React',
@@ -20,6 +21,13 @@ const tech = [
 ]
 
 export function Home() {
+  usePageMeta({
+    title: 'Samuel Gutiérrez — Sitios web para pequeños negocios',
+    description:
+      'Diseño y programo landing pages y sitios web para pymes y emprendedores en Chile. Proyectos demostrativos, precios referenciales y contacto directo por WhatsApp.',
+    path: '/',
+  })
+
   return (
     <>
       <Header />

@@ -1,4 +1,6 @@
-import { DemoBadge } from '../../components/DemoBadge'
+import { DemoNotice } from '../../components/DemoNotice'
+import { contactHref } from '../../config/site'
+import { usePageMeta } from '../../hooks/usePageMeta'
 import './pasteleria.css'
 
 const products = [
@@ -51,9 +53,17 @@ const steps = [
 ]
 
 export function Pasteleria() {
+  usePageMeta({
+    title: 'Miga & Miel — Demo de pastelería | Samuel Gutiérrez',
+    description:
+      'Proyecto demostrativo de sitio para pastelería artesanal: catálogo y encargos. Negocio y contenido ficticios.',
+    path: '/demos/pasteleria',
+  })
+
   return (
     <div className="mm">
       <header className="mm-nav">
+        <DemoNotice />
         <div className="mm-wrap mm-nav-inner">
           <a className="mm-logo" href="#inicio">
             <span className="mm-logo-name">
@@ -72,7 +82,7 @@ export function Pasteleria() {
         </div>
       </header>
 
-      <main>
+      <main id="contenido">
         <section className="mm-hero" id="inicio">
           <div className="mm-wrap mm-hero-grid">
             <div className="mm-copy">
@@ -87,7 +97,7 @@ export function Pasteleria() {
               </p>
               <div className="mm-actions">
                 <a className="mm-btn" href="#contacto">
-                  Encargar por WhatsApp
+                  Encargar
                 </a>
                 <a className="mm-btn mm-btn-ghost" href="#catalogo">
                   Ver catálogo
@@ -105,7 +115,7 @@ export function Pasteleria() {
                 <span className="mm-cherry" />
               </div>
               <span className="mm-tag">100 % artesanal</span>
-              <span className="mm-badge">Desde 2019</span>
+              <span className="mm-badge">Pastelería de ejemplo</span>
             </div>
           </div>
         </section>
@@ -124,6 +134,7 @@ export function Pasteleria() {
             <header className="mm-head">
               <span className="mm-eyebrow">Catálogo</span>
               <h2>Lo que sale del horno esta semana.</h2>
+              <p className="mm-note">Precios de ejemplo: no corresponden a una oferta comercial.</p>
             </header>
             <div className="mm-grid">
               {products.map((p) => (
@@ -171,11 +182,12 @@ export function Pasteleria() {
               <span className="mm-quote-mark" aria-hidden="true">
                 “
               </span>
+              <span className="demo-example">Ejemplo</span>
               <p>
                 Pedí la torta de frambuesa para el cumpleaños de mi mamá y fue el comentario de toda
                 la mesa. Ya encargué la de chocolate para el próximo.
               </p>
-              <footer>Carolina V. · Cliente desde 2021</footer>
+              <footer>Testimonio de ejemplo · Cliente ficticio</footer>
             </blockquote>
           </div>
         </section>
@@ -189,9 +201,17 @@ export function Pasteleria() {
                 Escríbeme por WhatsApp con lo que tienes en mente. Te respondo con el valor, los
                 sabores disponibles y la hora de retiro.
               </p>
-              <a className="mm-btn mm-btn-light" href="#inicio">
-                Escribir por WhatsApp
+              <a
+                className="mm-btn mm-btn-light"
+                href={contactHref(
+                  'Hola Samuel, vi la demo de Miga & Miel y quiero una web similar para mi negocio.',
+                )}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Quiero una web así
               </a>
+              <p className="demo-note">Sitio de demostración: no recibe encargos reales.</p>
             </div>
             <div className="mm-info">
               <div>
@@ -225,8 +245,6 @@ export function Pasteleria() {
           <p>© {new Date().getFullYear()} Miga & Miel. Sitio de demostración.</p>
         </div>
       </footer>
-
-      <DemoBadge />
     </div>
   )
 }

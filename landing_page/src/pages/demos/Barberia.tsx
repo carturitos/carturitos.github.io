@@ -1,4 +1,6 @@
-import { DemoBadge } from '../../components/DemoBadge'
+import { DemoNotice } from '../../components/DemoNotice'
+import { contactHref } from '../../config/site'
+import { usePageMeta } from '../../hooks/usePageMeta'
 import './barberia.css'
 
 const services = [
@@ -33,21 +35,29 @@ const testimonials = [
   {
     quote:
       'Llevo tres años viniendo y nunca salgo con un corte que no pedí. Eso, para mí, lo es todo.',
-    author: 'Matías R.',
-    detail: 'Cliente desde 2022',
+    author: 'Cliente de ejemplo',
+    detail: 'Testimonio de ejemplo',
   },
   {
     quote:
       'Reservar por WhatsApp me salvó la semana: entro a mi hora y salgo en cuarenta minutos.',
-    author: 'Cristóbal P.',
-    detail: 'Cliente desde 2023',
+    author: 'Cliente de ejemplo',
+    detail: 'Testimonio de ejemplo',
   },
 ]
 
 export function Barberia() {
+  usePageMeta({
+    title: 'Corte Real — Demo de barbería | Samuel Gutiérrez',
+    description:
+      'Proyecto demostrativo de sitio para barbería: servicios, precios y reserva. Negocio y contenido ficticios.',
+    path: '/demos/barberia',
+  })
+
   return (
     <div className="cr">
       <header className="cr-nav">
+        <DemoNotice />
         <div className="cr-wrap cr-nav-inner">
           <a className="cr-logo" href="#inicio">
             CORTE<span>REAL</span>
@@ -64,7 +74,7 @@ export function Barberia() {
         </div>
       </header>
 
-      <main>
+      <main id="contenido">
         <section className="cr-hero" id="inicio">
           <div className="cr-wrap cr-hero-grid">
             <div className="cr-hero-copy">
@@ -80,7 +90,7 @@ export function Barberia() {
               </p>
               <div className="cr-hero-actions">
                 <a className="cr-btn cr-btn-gold" href="#reservar">
-                  Reservar por WhatsApp
+                  Reservar hora
                 </a>
                 <a className="cr-btn cr-btn-line" href="#servicios">
                   Ver precios
@@ -88,16 +98,16 @@ export function Barberia() {
               </div>
               <ul className="cr-stats">
                 <li>
-                  <strong>12</strong>
-                  <span>años en el rubro</span>
-                </li>
-                <li>
-                  <strong>4,9</strong>
-                  <span>312 reseñas</span>
-                </li>
-                <li>
                   <strong>6</strong>
+                  <span>servicios en carta</span>
+                </li>
+                <li>
+                  <strong>3</strong>
                   <span>barberos</span>
+                </li>
+                <li>
+                  <strong>Lun–Sáb</strong>
+                  <span>horario</span>
                 </li>
               </ul>
             </div>
@@ -111,7 +121,7 @@ export function Barberia() {
               <div className="cr-mini-card">
                 <span>Próxima hora</span>
                 <strong>Hoy · 17:30</strong>
-                <small>Quedan 2 cupos</small>
+                <small>Dato de ejemplo</small>
               </div>
             </div>
           </div>
@@ -135,6 +145,7 @@ export function Barberia() {
                 </article>
               ))}
             </div>
+            <p className="cr-note">Precios de ejemplo; no corresponden a una oferta comercial.</p>
           </div>
         </section>
 
@@ -157,15 +168,13 @@ export function Barberia() {
         <section className="cr-section" id="resena">
           <div className="cr-wrap">
             <header className="cr-section-head">
-              <span className="cr-eyebrow">Reseñas</span>
-              <h2>Clientes que vuelven.</h2>
+              <span className="cr-eyebrow">Contenido de ejemplo</span>
+              <h2>Testimonios de ejemplo.</h2>
             </header>
             <div className="cr-quotes">
               {testimonials.map((item) => (
-                <blockquote className="cr-quote" key={item.author}>
-                  <div className="cr-stars" aria-label="5 de 5 estrellas">
-                    ★★★★★
-                  </div>
+                <blockquote className="cr-quote" key={item.quote}>
+                  <span className="demo-example">Ejemplo</span>
                   <p>“{item.quote}”</p>
                   <footer>
                     <strong>{item.author}</strong>
@@ -186,9 +195,19 @@ export function Barberia() {
                 Escríbenos por WhatsApp con el día y la hora que prefieres. Confirmamos en minutos
                 y te guardamos el cupo.
               </p>
-              <a className="cr-btn cr-btn-gold cr-btn-lg" href="#inicio">
-                Escribir por WhatsApp
+              <a
+                className="cr-btn cr-btn-gold cr-btn-lg"
+                href={contactHref(
+                  'Hola Samuel, vi la demo de Corte Real y quiero una web similar para mi negocio.',
+                )}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Quiero una web así
               </a>
+              <p className="cr-note">
+                Este sitio es una demostración: no reserva horas reales.
+              </p>
             </div>
             <div className="cr-info">
               <div>
@@ -201,7 +220,7 @@ export function Barberia() {
               </div>
               <div>
                 <span>Teléfono</span>
-                <strong>+56 9 0000 0000</strong>
+                <strong>Dato de ejemplo</strong>
               </div>
               <div>
                 <span>Pago</span>
@@ -220,8 +239,6 @@ export function Barberia() {
           <p>© {new Date().getFullYear()} Corte Real. Sitio de demostración.</p>
         </div>
       </footer>
-
-      <DemoBadge />
     </div>
   )
 }

@@ -9,10 +9,10 @@ export function Demos() {
       <div className="container">
         <Reveal className="section-head">
           <span className="kicker">02 — Demos</span>
-          <h2>Mira lo que vendo antes de contratarme.</h2>
+          <h2>Mira lo que puedo construir para tu negocio.</h2>
           <p>
-            Tres sitios completos, hechos por mí para tres rubros distintos. Puedes entrar,
-            navegarlos y probarlos en tu celular. Si te gusta uno, lo adapto a tu negocio.
+            Tres proyectos conceptuales con identidades y enfoques distintos. Entra, pruébalos en
+            tu celular y pide uno adaptado a tu negocio.
           </p>
         </Reveal>
 
@@ -21,14 +21,20 @@ export function Demos() {
             <Reveal key={demo.slug} delay={index * 70}>
               <Link className="demo-card" to={`/demos/${demo.slug}`} target="_blank" rel="noreferrer">
                 <div className="demo-shot">
-                  <img src={demo.shot} alt={`Captura del sitio de demostración ${demo.name}`} loading="lazy" />
+                  <img
+                    src={demo.shot}
+                    alt={`Captura del sitio de demostración ${demo.name}`}
+                    width={1440}
+                    height={990}
+                    loading="lazy"
+                  />
                   <span className="demo-overlay">
                     Abrir demo
                     <ArrowUpRight size={14} />
                   </span>
                 </div>
                 <div className="demo-body">
-                  <span className="demo-sector">{demo.sector}</span>
+                  <span className="demo-sector">Demo · {demo.sector}</span>
                   <h3>{demo.name}</h3>
                   <p>{demo.summary}</p>
                   <div className="demo-tags">
@@ -43,8 +49,8 @@ export function Demos() {
         </div>
 
         <p className="section-footnote">
-          Las demos usan datos y números de ejemplo. Tu proyecto se construye con tu marca, tus
-          textos y tus precios reales.
+          Proyectos demostrativos: los negocios, precios y contenidos son ficticios. Tu proyecto se
+          construye con tu marca, tus textos y tus precios reales.
         </p>
       </div>
     </section>

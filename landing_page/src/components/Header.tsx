@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { contactHref, contactLabel, site } from '../config/site'
+import { useEffect, useRef, useState } from 'react'
+import { contactHref, site } from '../config/site'
 import { ArrowUpRight, Close, Menu, WhatsApp } from './Icons'
 
 const links = [
@@ -13,6 +13,8 @@ const links = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -28,6 +30,22 @@ export function Header() {
     }
   }, [open])
 
+  useEffect(() => {
+    if (!open) return
+
+    navRef.current?.querySelector<HTMLAnchorElement>('a')?.focus()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+        menuButtonRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [open])
+
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="container header-inner">
@@ -39,7 +57,12 @@ export function Header() {
           </span>
         </a>
 
-        <nav className={`site-nav${open ? ' is-open' : ''}`} aria-label="Navegación principal">
+        <nav
+          ref={navRef}
+          id="menu"
+          className={`site-nav${open ? ' is-open' : ''}`}
+          aria-label="Navegación principal"
+        >
           {links.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
@@ -59,6 +82,7 @@ export function Header() {
         </nav>
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="menu-toggle"
           aria-expanded={open}
@@ -69,7 +93,6 @@ export function Header() {
           {open ? <Close size={22} /> : <Menu size={22} />}
         </button>
       </div>
-      <span className="visually-hidden">{contactLabel()}</span>
     </header>
   )
 }

@@ -59,8 +59,8 @@ export function Services() {
         </div>
 
         <p className="section-footnote">
-          Precios de referencia en pesos chilenos. El valor final depende del alcance y siempre se
-          confirma por escrito antes de comenzar.
+          Precios referenciales en pesos chilenos, sujetos a evaluación del alcance. No incluyen
+          dominio ni hosting. El valor final se confirma por escrito antes de comenzar.
         </p>
       </div>
     </section>

@@ -11,7 +11,7 @@ export const site = {
   role: 'Desarrollador Full Stack',
   location: 'Santiago, Chile · trabajo remoto',
   email: 'sam.gutierrez.oliva@gmail.com',
-  whatsapp: '',
+  whatsapp: '56951048157',
   github: 'https://github.com/carturitos',
   linkedin: '',
   url: 'https://carturitos.github.io',

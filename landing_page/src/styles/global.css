@@ -799,6 +799,7 @@ textarea {
 .section {
   position: relative;
   padding: clamp(64px, 8.5vw, 104px) 0;
+  scroll-margin-top: 90px;
 }
 
 .section-head {
@@ -1695,6 +1696,20 @@ textarea {
   font-size: 0.82rem;
 }
 
+.form-status {
+  display: grid;
+  gap: 8px;
+}
+
+.copy-button {
+  margin-top: 2px;
+}
+
+.copy-confirm {
+  font-size: 0.74rem;
+  color: #b7f0c9;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -1974,6 +1989,70 @@ textarea {
 
   .tech-list li:nth-child(n + 7) {
     display: none;
+  }
+}
+
+/* ---------- Aviso de proyecto demostrativo ---------- */
+
+.demo-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 8px 18px;
+  background: #0c1220;
+  color: #f6f4ef;
+  border-bottom: 1px solid rgba(246, 244, 239, 0.14);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.demo-notice p {
+  max-width: 92ch;
+}
+
+.demo-notice strong {
+  color: #ff9c82;
+}
+
+.demo-notice a {
+  color: #ffc0ae;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.demo-notice a:hover {
+  color: #ffffff;
+}
+
+.demo-example {
+  display: inline-block;
+  padding: 2px 9px;
+  border: 1px dashed currentColor;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.demo-note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  opacity: 0.72;
+}
+
+@media (max-width: 640px) {
+  .demo-notice {
+    gap: 6px;
+    padding: 7px 12px;
+    font-size: 0.64rem;
   }
 }
 
