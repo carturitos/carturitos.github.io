@@ -1,0 +1,745 @@
+/* Demo 02 — Dental Aurora (clínica dental) */
+
+.da {
+  --da-bg: #f7fbfc;
+  --da-ink: #0b2a33;
+  --da-muted: #55707a;
+  --da-teal: #0e7490;
+  --da-teal-dark: #0a5a70;
+  --da-soft: #eaf4f7;
+  --da-line: #d9e8ed;
+
+  background: var(--da-bg);
+  color: var(--da-ink);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.da h1,
+.da h2,
+.da h3 {
+  font-family: 'Sora', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.da a {
+  color: inherit;
+}
+
+.da-wrap {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Navegación */
+
+.da-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--da-line);
+}
+
+.da-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 76px;
+}
+
+.da-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.da-logo-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--da-teal);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.da-links {
+  display: flex;
+  gap: 26px;
+}
+
+.da-links a {
+  font-size: 0.85rem;
+  color: var(--da-muted);
+  transition: color 0.2s ease;
+}
+
+.da-links a:hover {
+  color: var(--da-teal);
+}
+
+/* Botones */
+
+.da-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 22px;
+  border-radius: 12px;
+  background: var(--da-teal);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid var(--da-teal);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.da-btn:hover {
+  background: var(--da-teal-dark);
+  border-color: var(--da-teal-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -14px rgba(14, 116, 144, 0.7);
+}
+
+.da-btn-ghost {
+  background: transparent;
+  color: var(--da-ink);
+  border-color: var(--da-line);
+}
+
+.da-btn-ghost:hover {
+  background: #fff;
+  color: var(--da-teal);
+  border-color: var(--da-teal);
+  box-shadow: none;
+}
+
+.da-btn-full {
+  width: 100%;
+}
+
+.da-btn-light {
+  background: #fff;
+  color: var(--da-teal-dark);
+  border-color: #fff;
+}
+
+.da-btn-light:hover {
+  background: #eaf4f7;
+  border-color: #eaf4f7;
+}
+
+/* Hero */
+
+.da-hero {
+  position: relative;
+  padding: 76px 0 84px;
+  overflow: hidden;
+}
+
+.da-hero::before {
+  content: '';
+  position: absolute;
+  top: -180px;
+  left: -120px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 116, 144, 0.12) 0%, rgba(14, 116, 144, 0) 65%);
+  pointer-events: none;
+}
+
+.da-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -220px;
+  right: -100px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 170, 130, 0.18) 0%, rgba(255, 170, 130, 0) 65%);
+  pointer-events: none;
+}
+
+.da-hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.da-copy {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+
+.da-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--da-line);
+  font-size: 0.76rem;
+  color: var(--da-teal-dark);
+  font-weight: 500;
+}
+
+.da-pill::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+.da-hero h1 {
+  font-size: clamp(2.5rem, 5.2vw, 4rem);
+  max-width: 15ch;
+}
+
+.da-hero h1 em {
+  font-style: normal;
+  color: var(--da-teal);
+  position: relative;
+  white-space: nowrap;
+}
+
+.da-hero h1 em::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.06em;
+  height: 0.3em;
+  background: rgba(14, 116, 144, 0.16);
+  z-index: -1;
+  border-radius: 3px;
+}
+
+.da-copy > p {
+  color: var(--da-muted);
+  max-width: 48ch;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.da-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.da-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  font-size: 0.82rem;
+  color: var(--da-muted);
+}
+
+.da-trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.da-trust li::before {
+  content: '✓';
+  color: var(--da-teal);
+  font-weight: 700;
+}
+
+/* Tarjeta de reserva */
+
+.da-hero-card {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: 26px;
+  background: #fff;
+  border-radius: 22px;
+  border: 1px solid var(--da-line);
+  box-shadow: 0 30px 60px -34px rgba(11, 42, 51, 0.35);
+}
+
+.da-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--da-line);
+}
+
+.da-card-head span {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--da-muted);
+}
+
+.da-card-head strong {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+}
+
+.da-field {
+  display: grid;
+  gap: 6px;
+}
+
+.da-field label {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--da-muted);
+}
+
+.da-field select {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--da-line);
+  background: var(--da-bg);
+  font-size: 0.86rem;
+  color: var(--da-ink);
+}
+
+.da-days {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.da-day {
+  display: grid;
+  gap: 3px;
+  place-items: center;
+  padding: 9px 4px;
+  border-radius: 10px;
+  border: 1px solid var(--da-line);
+  background: #fff;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.da-day span {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--da-muted);
+}
+
+.da-day strong {
+  font-size: 0.98rem;
+}
+
+.da-day.is-active {
+  background: var(--da-teal);
+  border-color: var(--da-teal);
+  color: #fff;
+}
+
+.da-day.is-active span {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.da-card-note {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--da-muted);
+}
+
+.da-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--da-line);
+  font-size: 0.74rem;
+  color: var(--da-muted);
+}
+
+.da-stars {
+  color: #f59e0b;
+  letter-spacing: 0.1em;
+  font-size: 0.76rem;
+}
+
+.da-rating strong {
+  color: var(--da-ink);
+}
+
+/* Franja de convenios */
+
+.da-strip {
+  border-top: 1px solid var(--da-line);
+  border-bottom: 1px solid var(--da-line);
+  background: #fff;
+  padding: 16px 0;
+}
+
+.da-strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 26px;
+  font-size: 0.78rem;
+  color: var(--da-muted);
+}
+
+.da-strip-inner strong {
+  color: var(--da-ink);
+  font-weight: 600;
+}
+
+/* Secciones */
+
+.da-section {
+  padding: 86px 0;
+}
+
+.da-soft {
+  background: var(--da-soft);
+}
+
+.da-head {
+  display: grid;
+  gap: 12px;
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.da-eyebrow {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--da-teal);
+}
+
+.da-head h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+}
+
+.da-head p {
+  color: var(--da-muted);
+  font-size: 0.95rem;
+}
+
+/* Tratamientos */
+
+.da-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.da-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+  background: #fff;
+  border: 1px solid var(--da-line);
+  border-radius: 18px;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.da-card:hover {
+  border-color: rgba(14, 116, 144, 0.4);
+  box-shadow: 0 24px 50px -34px rgba(11, 42, 51, 0.4);
+  transform: translateY(-2px);
+}
+
+.da-card-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.da-card-top h3 {
+  font-size: 1.12rem;
+}
+
+.da-card-top span {
+  font-size: 0.7rem;
+  color: var(--da-muted);
+  white-space: nowrap;
+}
+
+.da-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--da-muted);
+  flex: 1;
+}
+
+.da-price {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--da-teal-dark);
+  padding-top: 10px;
+  border-top: 1px solid var(--da-line);
+}
+
+/* Pasos */
+
+.da-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.da-step {
+  padding: 26px;
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid var(--da-line);
+}
+
+.da-step-num {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--da-soft);
+  color: var(--da-teal);
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.72rem;
+  margin-bottom: 14px;
+}
+
+.da-step h3 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.da-step p {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--da-muted);
+}
+
+/* Equipo */
+
+.da-team {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.da-person {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 30px 20px;
+  background: #fff;
+  border: 1px solid var(--da-line);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.da-avatar {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, #bfe3ea, #7cc4d4);
+  color: #0a4a5c;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.da-person strong {
+  font-size: 0.92rem;
+}
+
+.da-person > span:last-child {
+  font-size: 0.76rem;
+  color: var(--da-muted);
+}
+
+/* Testimonios */
+
+.da-reviews {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.da-review {
+  margin: 0;
+  padding: 24px;
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid var(--da-line);
+}
+
+.da-review p {
+  margin: 12px 0 16px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--da-ink);
+}
+
+.da-review footer {
+  font-size: 0.76rem;
+  color: var(--da-muted);
+}
+
+/* Contacto */
+
+.da-contact {
+  background:
+    radial-gradient(70% 80% at 85% 15%, rgba(14, 116, 144, 0.35) 0%, transparent 65%),
+    #07323d;
+  color: #eaf4f7;
+  padding: 80px 0;
+}
+
+.da-contact-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.da-contact .da-eyebrow {
+  color: #7fd0e2;
+}
+
+.da-contact h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+  margin: 12px 0 16px;
+}
+
+.da-contact p {
+  color: rgba(234, 244, 247, 0.72);
+  max-width: 44ch;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.da-info {
+  display: grid;
+  gap: 18px;
+}
+
+.da-info div {
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(234, 244, 247, 0.14);
+}
+
+.da-info span {
+  display: block;
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7fd0e2;
+  margin-bottom: 5px;
+}
+
+.da-info strong {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Footer */
+
+.da-footer {
+  background: #fff;
+  border-top: 1px solid var(--da-line);
+  padding: 24px 0;
+}
+
+.da-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.da-footer p {
+  font-size: 0.74rem;
+  color: var(--da-muted);
+}
+
+@media (max-width: 980px) {
+  .da-hero-grid,
+  .da-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .da-hero-card {
+    max-width: 460px;
+  }
+
+  .da-grid,
+  .da-steps,
+  .da-team,
+  .da-reviews {
+    grid-template-columns: 1fr;
+  }
+
+  .da-reviews {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 760px) {
+  .da-links {
+    display: none;
+  }
+
+  .da-nav-inner {
+    height: 66px;
+  }
+
+  .da-hero {
+    padding: 52px 0 64px;
+  }
+
+  .da-section {
+    padding: 62px 0;
+  }
+
+  .da-contact {
+    padding: 60px 0;
+  }
+}
