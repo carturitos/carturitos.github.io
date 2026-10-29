@@ -35,6 +35,25 @@ reemplazarlo o acreditarlo si se publica comercialmente.
 **Tratamiento:** recorte central con sesgo vertical, redimensión con Lanczos y conversión a WebP
 calidad 80. No se altera el contenido de la escena.
 
+### Archivos publicados
+
+Los originales viven en `landing_page/public/photos/miga-miel/` con dos anchos por imagen
+(`nombre.webp` y `nombre-sm.webp`) para el `srcset`. El mockup conserva una copia en
+`docs/mockups/miga-miel/assets/photos/`.
+
+| En el sitio | Equivale a |
+| --- | --- |
+| `hero.webp` / `hero-sm.webp` | `hero-cake.webp` |
+| `prod-choco.webp` | `prod-choco.webp` |
+| `prod-berry.webp` | `prod-berry.webp` |
+| `prod-lemon.webp` | `prod-lemon.webp` |
+| `prod-box.webp` | `prod-box.webp` |
+| `prod-cupcakes.webp` | `prod-cupcakes.webp` |
+| `custom-main.webp` / `custom-detail.webp` | mismos nombres |
+| `gal-tier.webp`, `gal-berry.webp`, `gal-macarons.webp`, `gal-choco.webp`, `gal-slice.webp` | mismos nombres |
+
+La imagen social `landing_page/public/og/miga-miel.jpg` (1200 × 630) se recorta de la foto del hero.
+
 ## Cómo se documenta una imagen nueva
 
 1. Buscar en Pexels (o Unsplash) con criterio editorial: luz natural, fondo cálido, producto

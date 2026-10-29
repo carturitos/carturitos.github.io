@@ -1,10 +1,15 @@
-import { useEffect } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Home } from './pages/Home'
-import { Barberia } from './pages/demos/Barberia'
-import { Dental } from './pages/demos/Dental'
-import { Pasteleria } from './pages/demos/Pasteleria'
 import { NotFound } from './pages/NotFound'
+
+/**
+ * Las demos se cargan por ruta: así cada visita descarga solo el CSS y el JS de
+ * la demo que abre, y la portada no paga el peso de las tres.
+ */
+const Barberia = lazy(() => import('./pages/demos/Barberia').then((m) => ({ default: m.Barberia })))
+const Dental = lazy(() => import('./pages/demos/Dental').then((m) => ({ default: m.Dental })))
+const MigaMiel = lazy(() => import('./pages/demos/miga/MigaMiel').then((m) => ({ default: m.MigaMiel })))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -30,13 +35,15 @@ export default function App() {
         Saltar al contenido
       </a>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/demos/barberia" element={<Barberia />} />
-        <Route path="/demos/dental" element={<Dental />} />
-        <Route path="/demos/pasteleria" element={<Pasteleria />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div className="route-loading" role="status" aria-live="polite" />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/demos/barberia" element={<Barberia />} />
+          <Route path="/demos/dental" element={<Dental />} />
+          <Route path="/demos/pasteleria" element={<MigaMiel />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   )
 }
