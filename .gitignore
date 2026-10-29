@@ -12,6 +12,8 @@ landing_page/.vite/
 .chrome-tmp/
 .edge-tmp/
 .shots/
+.tmp-*/
+landing_page/dist-check/
 
 # Entorno y sistema
 .env
