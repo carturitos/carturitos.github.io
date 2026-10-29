@@ -39,6 +39,8 @@ export function MigaMiel() {
 
   const heroRef = useRef<HTMLElement | null>(null)
   const toggleRef = useRef<HTMLButtonElement | null>(null)
+  const navRef = useRef<HTMLElement | null>(null)
+  const headerRef = useRef<HTMLElement | null>(null)
 
   const need = needOptions.find((option) => option.id === needId) ?? needOptions[0]
 
@@ -58,12 +60,41 @@ export function MigaMiel() {
       if (event.key === 'Escape') {
         setMenuOpen(false)
         toggleRef.current?.focus()
+        return
+      }
+
+      if (event.key !== 'Tab') return
+
+      // El resto de la página está `inert`; el tabulador circular dentro de la
+      // cabecera y el panel, que son los únicos controles visibles.
+      const header = headerRef.current
+      if (!header) return
+
+      const focusable = Array.from(
+        header.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
+      ).filter((element) => element.getClientRects().length > 0)
+
+      if (focusable.length === 0) return
+
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
       }
     }
 
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     document.addEventListener('keydown', onKeyDown)
+
+    // El foco entra al panel; el resto de la página queda `inert` mientras está abierto.
+    const firstLink = navRef.current?.querySelector('a')
+    firstLink?.focus()
 
     return () => {
       document.body.style.overflow = previousOverflow
@@ -86,6 +117,7 @@ export function MigaMiel() {
 
   function closeMenu() {
     setMenuOpen(false)
+    toggleRef.current?.focus()
   }
 
   function consultProduct(selected: Product) {
@@ -104,7 +136,7 @@ export function MigaMiel() {
         </a>
       </div>
 
-      <header className="mm-head">
+      <header className="mm-head" ref={headerRef}>
         <div className="mm-wrap mm-head-inner">
           <a className="mm-brand" href="#inicio">
             <span className="mm-brand-symbol" aria-hidden="true">
@@ -127,6 +159,7 @@ export function MigaMiel() {
           </a>
 
           <nav
+            ref={navRef}
             className={`mm-nav${menuOpen ? ' is-open' : ''}`}
             id="mm-menu"
             aria-label="Navegación principal"
@@ -155,7 +188,7 @@ export function MigaMiel() {
         </div>
       </header>
 
-      <main id="contenido">
+      <main id="contenido" inert={menuOpen}>
         {/* 1 · Hero */}
         <section className="mm-hero" id="inicio" ref={heroRef}>
           <div className="mm-wrap mm-hero-grid">
@@ -181,11 +214,9 @@ export function MigaMiel() {
                     />
                   </svg>
                 </a>
-                <a className="mm-btn mm-btn-outline" href="#consultar">Encargar</a>
+                <a className="mm-btn mm-btn-outline" href="#consultar">Quiero una web así</a>
               </div>
-              <p className="mm-hero-note">
-                Piezas hechas por encargo · Entrega o retiro coordinados al confirmar
-              </p>
+              <p className="mm-hero-note">Recetas de familia, hechas en tandas pequeñas.</p>
             </div>
 
             <div className="mm-hero-visual">
@@ -372,8 +403,8 @@ export function MigaMiel() {
                 </li>
                 <li>
                   <span>03</span>
-                  <h3>Coordinación simple</h3>
-                  <p>Fecha, retiro o entrega y pago se acuerdan al confirmar.</p>
+                  <h3>Del horno a la mesa</h3>
+                  <p>Empaque y presentación pensados para que la pieza llegue impecable.</p>
                 </li>
               </ol>
               <a
@@ -406,8 +437,7 @@ export function MigaMiel() {
                 <h2 id="mm-galeria-title">Del horno a la mesa.</h2>
               </div>
               <p className="mm-aside">
-                Producto, detalle y montaje. Fotografía de Pexels con licencia libre, documentada en
-                el proyecto.
+                Producto, detalle y montaje: así se ve una mesa cuando el diseño también se cocina.
               </p>
             </Reveal>
 
@@ -488,9 +518,13 @@ export function MigaMiel() {
               </p>
               <ul className="mm-deliverables">
                 <li>Diseño a medida</li>
-                <li>Catálogo editable</li>
+                <li>Catálogo con fichas</li>
                 <li>Consultas por WhatsApp</li>
               </ul>
+              <p className="mm-extra">
+                Editar precios y productos sin tocar código: panel de administración, servicio
+                adicional.
+              </p>
             </Reveal>
 
             <Reveal className="mm-consulta-card">
@@ -546,7 +580,7 @@ export function MigaMiel() {
         </section>
       </main>
 
-      <footer className="mm-foot" id="carturitos">
+      <footer className="mm-foot" id="carturitos" inert={menuOpen}>
         <div className="mm-wrap mm-foot-grid">
           <div className="mm-foot-brand">
             <span className="mm-brand-name">

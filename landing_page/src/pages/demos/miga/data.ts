@@ -112,32 +112,32 @@ export const products: Product[] = [
 export const steps = [
   { title: 'Elige', text: 'Revisa el catálogo o cuéntanos qué tienes en mente.' },
   {
-    title: 'Cuéntanos la fecha',
-    text: 'Día, cantidad de personas y referencias que te gusten.',
+    title: 'Imagina',
+    text: 'Cuéntanos la ocasión, los sabores y las referencias que te gusten.',
   },
   {
-    title: 'Confirmamos',
-    text: 'Te respondemos con valor y opciones. La fecha se reserva al confirmar.',
+    title: 'Diseñamos',
+    text: 'Afinamos tamaño, decoración y detalles hasta que quede claro.',
   },
-  { title: 'Retira o recibe', text: 'Coordinamos entrega o retiro para el día acordado.' },
+  { title: 'Celebra', text: 'La pieza llega a la mesa como la imaginaste.' },
 ]
 
 export const faqs = [
   {
-    q: '¿Cómo se encarga una pieza?',
-    a: 'Eliges del catálogo o cuentas tu idea. Definimos sabor, tamaño y decoración, y coordinamos la fecha antes de confirmar.',
+    q: '¿Cómo empieza un encargo?',
+    a: 'Con una conversación: qué celebras, para cuántas personas y qué te gustaría ver en la mesa. De ahí sale la primera propuesta.',
   },
   {
-    q: '¿Con cuánta anticipación conviene escribir?',
-    a: 'Depende de la pieza y de la fecha: las celebraciones grandes piden más margen. Con tu fecha a la vista te confirmamos disponibilidad.',
+    q: '¿Puedo pedir algo que no está en el catálogo?',
+    a: 'Sí. La carta es un punto de partida: si imaginas otra cosa, la diseñamos juntos.',
   },
   {
-    q: '¿Hacen versiones sin gluten o sin lactosa?',
-    a: 'Sí, coordinando antes. Eso sí: la cocina también trabaja con harina de trigo, así que lo decimos antes de confirmar.',
+    q: '¿Trabajan con fruta de temporada?',
+    a: 'Sí. La fruta y los sabores cambian con la estación, por eso el catálogo también se mueve.',
   },
   {
-    q: '¿Hay entrega o solo retiro?',
-    a: 'Ambas se coordinan al confirmar el encargo, según la comuna y el tamaño de la pieza.',
+    q: '¿Se puede personalizar la decoración?',
+    a: 'Es la parte que más disfrutamos: paleta, flores, el mensaje de la tarjeta y el nivel de detalle.',
   },
 ]
 
