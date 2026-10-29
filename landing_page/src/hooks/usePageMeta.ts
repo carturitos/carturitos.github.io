@@ -6,6 +6,8 @@ type PageMetaOptions = {
   description: string
   /** Ruta absoluta del sitio, empezando con "/". */
   path: string
+  /** Imagen social relativa al dominio, empezando con "/". */
+  image?: string
   noindex?: boolean
 }
 
@@ -26,7 +28,13 @@ function upsertMeta(attribute: 'name' | 'property', key: string, content: string
  * dependencia: el HTML base ya trae las etiquetas de la home y acá solo se
  * actualizan, evitando duplicados.
  */
-export function usePageMeta({ title, description, path, noindex = false }: PageMetaOptions): void {
+export function usePageMeta({
+  title,
+  description,
+  path,
+  image,
+  noindex = false,
+}: PageMetaOptions): void {
   useEffect(() => {
     const url = `${site.url}${path}`
     document.title = title
@@ -35,6 +43,15 @@ export function usePageMeta({ title, description, path, noindex = false }: PageM
     upsertMeta('property', 'og:title', title)
     upsertMeta('property', 'og:description', description)
     upsertMeta('property', 'og:url', url)
+    upsertMeta('name', 'twitter:card', 'summary_large_image')
+    upsertMeta('name', 'twitter:title', title)
+    upsertMeta('name', 'twitter:description', description)
+
+    if (image) {
+      const absolute = image.startsWith('http') ? image : `${site.url}${image}`
+      upsertMeta('property', 'og:image', absolute)
+      upsertMeta('name', 'twitter:image', absolute)
+    }
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!canonical) {
@@ -50,5 +67,5 @@ export function usePageMeta({ title, description, path, noindex = false }: PageM
     } else if (robots) {
       robots.remove()
     }
-  }, [title, description, path, noindex])
+  }, [title, description, path, image, noindex])
 }
