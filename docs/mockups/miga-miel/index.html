@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Miga &amp; Miel — Propuesta visual (dirección B)</title>
+    <meta
+      name="description"
+      content="Mockup estático de la propuesta visual para Miga & Miel, demo 01 del portafolio Carturitos."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+
+    <!-- Barra de contexto: se conserva el aviso de demo, con el lenguaje visual nuevo -->
+    <div class="demobar">
+      <p>
+        <strong>Propuesta visual · dirección B</strong> — Miga &amp; Miel es una marca ficticia
+        creada como demostración. Las fotos son marcadores de posición.
+      </p>
+      <a href="#consultar">Volver al portafolio</a>
+    </div>
+
+    <header class="site-head">
+      <div class="head-inner">
+        <a class="brand" href="#inicio">
+          <span class="brand-symbol" aria-hidden="true">
+            <svg viewBox="0 0 32 32" focusable="false">
+              <path
+                d="M16.5 26.5c-6.2 0-10.5-4.2-10.5-9.4C6 11.8 10.2 8 15.2 8c4.6 0 7.8 3 7.8 6.9 0 3.5-2.6 6.3-6.1 6.3-3 0-5.3-2-5.3-4.7 0-2.4 1.8-4.2 4.2-4.2"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">miga <i>&amp;</i> miel</span>
+            <span class="brand-tag">pastelería de autor</span>
+          </span>
+        </a>
+
+        <nav class="nav" id="menu-principal" aria-label="Navegación principal">
+          <a href="#productos">Productos</a>
+          <a href="#personalizados">Personalizados</a>
+          <a href="#como-pedir">Cómo pedir</a>
+          <a href="#preguntas">Preguntas</a>
+        </nav>
+
+        <div class="head-actions">
+          <a class="btn btn-coral btn-sm" href="#consultar">Consultar pedido</a>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-principal"
+            aria-label="Abrir menú"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="inicio">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <span class="chip"><span class="dot" aria-hidden="true"></span>Demostración · pastelería conceptual</span>
+            <h1>Hecho para celebrar lo <span class="mark">rico</span> de cada momento</h1>
+            <p class="lead">
+              Tortas, cupcakes y mesas dulces con receta propia, en tandas pequeñas. Cuéntanos qué
+              celebras y para cuándo, y armamos algo que se recuerde.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-coral" href="#productos">
+                Ver productos
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="btn btn-outline" href="#consultar">Hacer un pedido</a>
+            </div>
+            <p class="hero-note">
+              Encargos con 48 h de anticipación · Retiro y entrega coordinados al confirmar
+            </p>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-arch" aria-hidden="true"></div>
+            <div class="plate p-hero plate-arch" role="img" aria-label="Marcador de posición: torta de frambuesa con crema y fruta fresca">
+              <span class="plate-label">Foto 01 · torta de frambuesa</span>
+            </div>
+            <span class="sticker sticker-hero">hecho<br />a mano</span>
+            <div class="float-card">
+              <span class="float-kicker">Más pedido</span>
+              <strong>Torta de frambuesa</strong>
+              <span class="float-price">$22.000 <em>referencial</em></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CINTA ============ -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>tortas por encargo</span><b>✳</b><span>cupcakes</span><b>✳</b><span>mesas dulces</span><b>✳</b>
+          <span>box regalo</span><b>✳</b><span>galletas de mantequilla</span><b>✳</b><span>postres</span><b>✳</b>
+          <span>tortas por encargo</span><b>✳</b><span>cupcakes</span><b>✳</b><span>mesas dulces</span><b>✳</b>
+          <span>box regalo</span><b>✳</b><span>galletas de mantequilla</span><b>✳</b><span>postres</span><b>✳</b>
+        </div>
+      </div>
+
+      <!-- ============ VALOR ============ -->
+      <section class="values" aria-labelledby="values-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <span class="eyebrow">La propuesta</span>
+            <h2 id="values-title">Dulce de verdad, sin atajos.</h2>
+          </div>
+          <ul class="values-grid">
+            <li>
+              <span class="num">01</span>
+              <h3>Masa de verdad</h3>
+              <p>Mantequilla, huevos y fruta de temporada. Nada de mezclas industriales ni sabor a plástico.</p>
+            </li>
+            <li>
+              <span class="num">02</span>
+              <h3>Diseño a tu medida</h3>
+              <p>Elegimos juntos sabores, tamaño y decoración según lo que estés celebrando.</p>
+            </li>
+            <li>
+              <span class="num">03</span>
+              <h3>Coordinación simple</h3>
+              <p>Fecha, retiro o entrega y forma de pago se definen al confirmar el encargo.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ CATÁLOGO ============ -->
+      <section class="catalog" id="productos" aria-labelledby="catalog-title">
+        <div class="wrap">
+          <div class="sec-head sec-head-row">
+            <div>
+              <span class="eyebrow">01 — Catálogo</span>
+              <h2 id="catalog-title">Lo que sale del horno<br />cada semana.</h2>
+            </div>
+            <p class="sec-aside">
+              Precios referenciales de demostración. Cada encargo se cotiza según tamaño, fecha y
+              decoración.
+            </p>
+          </div>
+
+          <div class="catalog-grid">
+            <article class="product product-feature">
+              <div class="plate p-choco" role="img" aria-label="Marcador de posición: torta de chocolate con ganache">
+                <span class="plate-tag">La favorita</span>
+              </div>
+              <div class="product-body">
+                <div class="product-top">
+                  <h3>Torta de chocolate y sal de mar</h3>
+                  <span class="price">$18.000</span>
+                </div>
+                <p>Bizcocho húmedo, ganache 70 % y una pizca de sal que cambia todo. Para 10 a 12 personas.</p>
+                <ul class="product-meta" aria-label="Detalles del producto">
+                  <li>10 a 12 porciones</li>
+                  <li>Chocolate 70 %</li>
+                  <li>48 h de anticipación</li>
+                </ul>
+                <a class="link-arrow" href="#consultar">Consultar este producto <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product">
+              <div class="plate p-berry" role="img" aria-label="Marcador de posición: torta de frambuesa con crema">
+                <span class="plate-tag">De temporada</span>
+              </div>
+              <div class="product-body">
+                <div class="product-top">
+                  <h3>Torta de frambuesa</h3>
+                  <span class="price">$22.000</span>
+                </div>
+                <p>Vainilla, frambuesas frescas y chantilly. 8 a 10 porciones.</p>
+                <a class="link-arrow" href="#consultar">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product">
+              <div class="plate p-lemon" role="img" aria-label="Marcador de posición: lemon pie con merengue tostado">
+                <span class="plate-tag">Clásica</span>
+              </div>
+              <div class="product-body">
+                <div class="product-top">
+                  <h3>Lemon pie</h3>
+                  <span class="price">$15.000</span>
+                </div>
+                <p>Masa quebrada, curd de limón de Pica y merengue tostado.</p>
+                <a class="link-arrow" href="#consultar">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product">
+              <div class="plate p-box" role="img" aria-label="Marcador de posición: caja de regalo con mini postres">
+                <span class="plate-tag">Para regalar</span>
+              </div>
+              <div class="product-body">
+                <div class="product-top">
+                  <h3>Box regalo</h3>
+                  <span class="price">$12.000</span>
+                </div>
+                <p>Seis piezas: mini tartas, alfajores y galletas de mantequilla.</p>
+                <a class="link-arrow" href="#consultar">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="product">
+              <div class="plate p-cup" role="img" aria-label="Marcador de posición: cupcakes con buttercream">
+                <span class="plate-tag">Para compartir</span>
+              </div>
+              <div class="product-body">
+                <div class="product-top">
+                  <h3>Cupcakes (6)</h3>
+                  <span class="price">$9.000</span>
+                </div>
+                <p>Vainilla o chocolate, con buttercream y terminación a elección.</p>
+                <a class="link-arrow" href="#consultar">Consultar <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+          </div>
+          <p class="mobile-hint" aria-hidden="true">Desliza para ver más →</p>
+        </div>
+      </section>
+
+      <!-- ============ PERSONALIZADOS ============ -->
+      <section class="custom" id="personalizados" aria-labelledby="custom-title">
+        <div class="wrap custom-grid">
+          <div class="custom-visual">
+            <div class="plate p-celebration plate-arch-sm" role="img" aria-label="Marcador de posición: mesa dulce para celebración"></div>
+            <div class="plate p-detail" role="img" aria-label="Marcador de posición: detalle de decoración con flores"></div>
+            <span class="sticker sticker-custom">tu fecha<br />manda</span>
+          </div>
+          <div class="custom-copy">
+            <span class="eyebrow light">02 — Personalizados</span>
+            <h2 id="custom-title">Tu idea,<br />nuestra receta.</h2>
+            <p>
+              Cumpleaños, matrimonios, lanzamientos o un martes cualquiera. Partimos de una
+              referencia, una paleta o una historia y la convertimos en torta.
+            </p>
+            <ul class="check-list">
+              <li>Tortas de dos y tres pisos</li>
+              <li>Mesas dulces para eventos</li>
+              <li>Box regalo con tarjeta escrita</li>
+            </ul>
+            <a class="btn btn-cream" href="#consultar">
+              Conversemos tu idea
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <p class="custom-note">Sin costos por cotizar. La disponibilidad se confirma según la fecha.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GALERÍA ============ -->
+      <section class="gallery" id="galeria" aria-labelledby="gallery-title">
+        <div class="wrap">
+          <div class="sec-head sec-head-row">
+            <div>
+              <span class="eyebrow">03 — Galería</span>
+              <h2 id="gallery-title">Del horno a la mesa.</h2>
+            </div>
+            <p class="sec-aside">
+              Fotografía propia y de bancos con licencia. Aquí van reemplazos por marcadores de
+              posición mientras se selecciona el material final.
+            </p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="g1 plate p-celebration">
+              <figcaption>Torta de celebración · 3 pisos</figcaption>
+            </figure>
+            <figure class="g2 plate p-berry">
+              <figcaption>Frambuesa y crema</figcaption>
+            </figure>
+            <figure class="g3 plate p-lemon">
+              <figcaption>Lemon pie</figcaption>
+            </figure>
+            <figure class="g4 plate p-box">
+              <figcaption>Box regalo</figcaption>
+            </figure>
+            <figure class="g5 plate p-cup">
+              <figcaption>Cupcakes</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CÓMO PEDIR ============ -->
+      <section class="steps" id="como-pedir" aria-labelledby="steps-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <span class="eyebrow">04 — Cómo pedir</span>
+            <h2 id="steps-title">Cuatro pasos, cero letra chica.</h2>
+          </div>
+          <ol class="steps-list">
+            <li>
+              <span class="step-n">1</span>
+              <h3>Elige</h3>
+              <p>Revisa el catálogo o cuéntanos qué tienes en mente.</p>
+            </li>
+            <li>
+              <span class="step-n">2</span>
+              <h3>Cuéntanos la fecha</h3>
+              <p>Día, cantidad de personas y referencias que te gusten.</p>
+            </li>
+            <li>
+              <span class="step-n">3</span>
+              <h3>Confirmamos</h3>
+              <p>Te respondemos con valor y opciones. La fecha se reserva al confirmar.</p>
+            </li>
+            <li>
+              <span class="step-n">4</span>
+              <h3>Retira o recibe</h3>
+              <p>Coordinamos entrega o retiro para el día acordado.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ FAQ + HONESTIDAD ============ -->
+      <section class="faq" id="preguntas" aria-labelledby="faq-title">
+        <div class="wrap faq-grid">
+          <div class="faq-copy">
+            <span class="eyebrow">05 — Preguntas</span>
+            <h2 id="faq-title">Antes de encargar.</h2>
+            <div class="honesty">
+              <span class="honesty-kicker">Qué es real en esta demo</span>
+              <p>
+                El diseño, el código y el formulario que abre una conversación son reales. Los
+                productos, precios, horarios y la marca son ficticios.
+              </p>
+            </div>
+            <p class="faq-extra">
+              ¿Otra duda? Escríbenos por WhatsApp y la resolvemos antes de encargar.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <details open>
+              <summary>¿Con cuánta anticipación conviene pedir?</summary>
+              <p>
+                Cinco días para tortas y 48 horas para box de galletas. Las fechas de temporada se
+                agotan antes, así que mejor consultar temprano.
+              </p>
+            </details>
+            <details>
+              <summary>¿Hacen versiones sin gluten o sin lactosa?</summary>
+              <p>
+                Sí, con coordinación previa. Eso sí: la cocina es compartida y también se trabaja con
+                harina de trigo, así que lo decimos antes de confirmar.
+              </p>
+            </details>
+            <details>
+              <summary>¿Cómo se reserva la fecha?</summary>
+              <p>
+                Al confirmar el encargo se abona el 50 % y el saldo se paga al retirar o recibir.
+                Todo queda por escrito en la conversación.
+              </p>
+            </details>
+            <details>
+              <summary>¿Hay despacho?</summary>
+              <p>
+                Sí, dentro de Santiago y coordinado según comuna. También puedes retirar en
+                Providencia el día acordado.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA FINAL ============ -->
+      <section class="order" id="consultar" aria-labelledby="order-title">
+        <div class="wrap order-grid">
+          <div class="order-copy">
+            <span class="eyebrow on-coral">06 — Encargos</span>
+            <h2 id="order-title">¿Tienes una idea dulce en mente?</h2>
+            <p>
+              Cuéntanos qué celebras y para cuándo. En esta demo el mensaje llega al desarrollador,
+              no a una pastelería real.
+            </p>
+            <ul class="order-meta">
+              <li><span>Respuesta</span>En menos de 24 h (dato de ejemplo)</li>
+              <li><span>Zona</span>Providencia y comunas cercanas</li>
+              <li><span>Pago</span>50 % para reservar, saldo al retirar</li>
+            </ul>
+          </div>
+
+          <form class="order-form" novalidate>
+            <p class="form-title">Armemos tu consulta</p>
+            <div class="field">
+              <label for="f-producto">Producto</label>
+              <select id="f-producto" name="producto">
+                <option>Torta de chocolate y sal de mar</option>
+                <option>Torta de frambuesa</option>
+                <option>Lemon pie</option>
+                <option>Box regalo</option>
+                <option>Cupcakes</option>
+                <option>Mesa dulce para evento</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-fecha">Fecha</label>
+                <input id="f-fecha" name="fecha" type="date" />
+              </div>
+              <div class="field">
+                <label for="f-personas">Personas</label>
+                <input id="f-personas" name="personas" type="number" min="1" value="10" />
+              </div>
+            </div>
+            <button class="btn btn-ink btn-block" type="submit">Preparar mi consulta</button>
+            <p class="form-note">
+              Se abre WhatsApp con el mensaje listo para enviar. No guardamos datos en este sitio.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap foot-grid">
+        <div class="foot-brand">
+          <span class="brand-name">miga <i>&amp;</i> miel</span>
+          <p>
+            Marca ficticia creada como demostración de diseño y desarrollo web por Samuel Gutiérrez.
+          </p>
+        </div>
+        <nav class="foot-nav" aria-label="Navegación del pie">
+          <span>Productos</span>
+          <a href="#productos">Catálogo</a>
+          <a href="#personalizados">Personalizados</a>
+          <a href="#como-pedir">Cómo pedir</a>
+        </nav>
+        <nav class="foot-nav" aria-label="Enlaces del desarrollador">
+          <span>Proyecto</span>
+          <a href="#consultar">Consultar una web así</a>
+          <a href="#inicio">Volver al portafolio</a>
+        </nav>
+      </div>
+      <div class="wrap foot-legal">
+        <p>© 2026 Miga &amp; Miel · Sitio de demostración</p>
+        <p>Diseño y desarrollo: Samuel Gutiérrez</p>
+      </div>
+    </footer>
+
+    <div class="mobile-cta">
+      <span><strong>Consultar pedido</strong> · demo</span>
+      <a class="btn btn-coral btn-sm" href="#consultar">Empezar</a>
+    </div>
+
+    <script>
+      const toggle = document.querySelector('.menu-toggle')
+      const nav = document.getElementById('menu-principal')
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true'
+        toggle.setAttribute('aria-expanded', String(!open))
+        toggle.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú')
+        document.body.classList.toggle('menu-open', !open)
+      })
+      nav?.querySelectorAll('a').forEach((a) =>
+        a.addEventListener('click', () => {
+          toggle?.setAttribute('aria-expanded', 'false')
+          document.body.classList.remove('menu-open')
+        }),
+      )
+      document.querySelector('.order-form')?.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const btn = e.currentTarget.querySelector('button')
+        if (!btn) return
+        btn.textContent = 'Abriendo WhatsApp…'
+        setTimeout(() => {
+          btn.textContent = 'Preparar mi consulta'
+        }, 1600)
+      })
+      if (location.search.includes('nofixed')) {
+        document.querySelector('.mobile-cta').style.display = 'none'
+      }
+    </script>
+  </body>
+</html>
