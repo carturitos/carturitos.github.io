@@ -1,10 +1,10 @@
-# Plan vigente del portafolio Carturitos
+# Criterios de evolución · Carturitos
 
-Actualizado el 2 de noviembre de 2026. Los ajustes acotados de calidad y honestidad comercial están autorizados. El rediseño principal y las ampliaciones funcionales se planifican aquí; requieren propuesta visual y alcance revisados antes de implementación.
+Este documento define el alcance y la aceptación de las próximas propuestas. El estado y las entregas completadas se resumen en [PLAN.md](../PLAN.md). Cada rediseño y ampliación funcional requiere revisar su propuesta visual y alcance antes de implementar.
 
 ## 1 Miga & Miel como referente
 
-Conservar composición, identidad, catálogo y ruta. Corregir foco del menú cerrado, cambio a escritorio con menú abierto, desplazamiento del diálogo y lenguaje de contacto. La demo no procesa compras ni reservas. Los precios de pastelería son ilustrativos; no son tarifas de desarrollo.
+Composición, identidad, catálogo y ruta se conservan como referencia. Los ajustes de foco del menú cerrado, cambio a escritorio con menú abierto, desplazamiento del diálogo y lenguaje de contacto se completaron en [PR #42](https://github.com/carturitos/carturitos.github.io/pull/42). La demo no procesa compras ni reservas. Los precios de pastelería son ilustrativos; no son tarifas de desarrollo.
 
 ## 2 Próximo trabajo la landing de Samuel
 
