@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://carturitos.github.io/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://carturitos.github.io/demos/barberia</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://carturitos.github.io/demos/dental</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://carturitos.github.io/demos/pasteleria</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <url><loc>https://carturitos.github.io/es</loc></url>
+  <url><loc>https://carturitos.github.io/en</loc></url>
+  <url><loc>https://carturitos.github.io/es/demos/barberia</loc></url>
+  <url><loc>https://carturitos.github.io/es/demos/dental</loc></url>
+  <url><loc>https://carturitos.github.io/es/demos/pasteleria</loc></url>
+  <url><loc>https://carturitos.github.io/en/demos/barberia</loc></url>
+  <url><loc>https://carturitos.github.io/en/demos/dental</loc></url>
+  <url><loc>https://carturitos.github.io/en/demos/pasteleria</loc></url>
 </urlset>

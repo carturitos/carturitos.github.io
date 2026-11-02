@@ -1,17 +1,14 @@
 import { Link } from 'react-router-dom'
-
-/**
- * Aviso obligatorio en las demos: deja claro que el negocio y su contenido
- * son ficticios y que el sitio es una pieza de portafolio.
- */
+import { usePresentation } from '../presentation/usePresentation'
 export function DemoNotice() {
+  const { homeHref } = usePresentation()
   return (
     <div className="demo-notice" role="note">
       <p>
-        <strong>Proyecto demostrativo.</strong> Negocio y contenido ficticios creados para mostrar
-        capacidades de diseño y desarrollo web.
+        <strong>Proyecto demostrativo.</strong> Negocio y contenido ficticios
+        creados para mostrar interfaces e interacciones.
       </p>
-      <Link to="/">Volver al portafolio</Link>
+      <Link to={`${homeHref}#projects`}>Volver a los proyectos</Link>
     </div>
   )
 }

@@ -5,11 +5,11 @@
 | Quiero cambiar… | Archivo |
 |-----------------|---------|
 | Nombre, correo, WhatsApp, LinkedIn | `landing_page/src/config/site.ts` |
-| Datos de las tarjetas de la página principal | `landing_page/src/data/services.ts` |
-| Registro de demos | `landing_page/src/data/demos.ts` |
-| Proceso y preguntas frecuentes | `landing_page/src/data/content.ts` |
-| Textos de las secciones | `landing_page/src/sections/*.tsx` |
-| Colores y estilos | `landing_page/src/styles/global.css` |
+| Datos de las tarjetas de la página principal | `landing_page/src/presentation/copy.ts` |
+| Registro de demos | `landing_page/src/presentation/copy.ts` |
+| Proceso y preguntas frecuentes | `landing_page/src/presentation/copy.ts` |
+| Textos de las secciones | `landing_page/src/presentation/PresentationHome.tsx` |
+| Colores y estilos | `landing_page/src/presentation/presentation.css` (portada) y estilos de cada demo |
 | Contenido de cada demo | `landing_page/src/pages/demos/*.tsx` y su `.css` |
 
 ## Configurar el WhatsApp
@@ -57,7 +57,8 @@ Cada push a `main` ejecuta el workflow **Deploy portfolio to GitHub Pages**:
 
 1. Instala dependencias con `npm ci`.
 2. Compila `landing_page/` con `npm run build`.
-3. Publica `landing_page/dist` en https://carturitos.github.io.
+3. Ejecuta las pruebas de rutas y destinos.
+4. Publica `landing_page/dist` en https://carturitos.github.io.
 
 Puedes seguir el deploy en la pestaña **Actions** del repositorio.
 

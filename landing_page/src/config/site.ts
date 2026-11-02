@@ -13,7 +13,9 @@ export const site = {
   email: 'sam.gutierrez.oliva@gmail.com',
   whatsapp: '56951048157',
   github: 'https://github.com/carturitos',
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/samuel-guti%C3%A9rrez-oliva-a5866a317/',
+  // Enable only after a real Gig has been published and checked.
+  fiverrGig: '',
   url: 'https://carturitos.github.io',
   availability: 'Propuesta freelance en preparación',
   responseTime: 'Respuesta según disponibilidad',

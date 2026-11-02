@@ -1,24 +1,24 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight } from '../components/Icons'
 import { usePageMeta } from '../hooks/usePageMeta'
-
+import { usePresentation } from '../presentation/usePresentation'
+import { copy } from '../presentation/copy'
 export function NotFound() {
+  const route = usePresentation()
+  const t = copy[route.locale]
   usePageMeta({
-    title: 'Página no encontrada | Samuel Gutiérrez',
-    description: 'La página que buscas no existe o cambió de dirección.',
+    title: t.notFound,
+    description: t.notFoundText,
     path: '/404',
     noindex: true,
   })
-
   return (
     <main className="not-found" id="contenido">
       <div className="container">
-        <span className="kicker">Error 404</span>
-        <h1>Esta página no existe.</h1>
-        <p>Puede que el enlace esté mal escrito o que el contenido se haya movido.</p>
-        <Link className="btn btn-primary" to="/">
-          Volver al portafolio
-          <ArrowRight size={16} />
+        <span className="kicker">404</span>
+        <h1>{t.notFound}</h1>
+        <p>{t.notFoundText}</p>
+        <Link className="btn btn-primary" to={route.homeHref}>
+          {t.returnHome} ↗
         </Link>
       </div>
     </main>

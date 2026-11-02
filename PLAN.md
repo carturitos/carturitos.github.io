@@ -9,6 +9,8 @@
 
 ## Próximas etapas
 
+La portada bilingüe y los contextos de navegación se implementaron en PR #48. La validación en dispositivo físico, las mediciones publicadas y la activación de un destino externo real mantienen su seguimiento por separado.
+
 | Orden | Proyecto | Entregable técnico | Tarea |
 | --- | --- | --- | --- |
 | 1 | Página principal | Tema claro, varias secciones, tres demos con igual peso, componentes y movimiento accesible. Revisar proporciones antes de implementar. | [#39](https://github.com/carturitos/carturitos.github.io/issues/39) |

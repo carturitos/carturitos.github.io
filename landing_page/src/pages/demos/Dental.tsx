@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { DemoNotice } from '../../components/DemoNotice'
-import { contactHref } from '../../config/site'
+import { usePresentation } from '../../presentation/usePresentation'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import './dental.css'
 
@@ -71,6 +71,7 @@ const reviews = [
 ]
 
 export function Dental() {
+  const { samples, platformHref, contactTarget, locale } = usePresentation()
   const [selectedDay, setSelectedDay] = useState(1)
 
   usePageMeta({
@@ -112,8 +113,9 @@ export function Dental() {
                 Sonríe sin miedo: acá te <em>explican todo.</em>
               </h1>
               <p>
-                Odontología general y estética con agenda online, atención puntual y presupuesto
-                por escrito antes de empezar. Sin sorpresas ni letra chica.
+                Odontología general y estética con agenda online, atención
+                puntual y presupuesto por escrito antes de empezar. Sin
+                sorpresas ni letra chica.
               </p>
               <div className="da-actions">
                 <a className="da-btn" href="#contacto">
@@ -166,9 +168,12 @@ export function Dental() {
               <a className="da-btn da-btn-full" href="#contacto">
                 Continuar
               </a>
-              <p className="da-card-note">Selección de ejemplo: no reserva una hora real.</p>
+              <p className="da-card-note">
+                Selección de ejemplo: no reserva una hora real.
+              </p>
               <p className="da-card-note demo-note">
-                Agenda, precios y reseñas son contenido ficticio de esta demostración.
+                Agenda, precios y reseñas son contenido ficticio de esta
+                demostración.
               </p>
             </div>
           </div>
@@ -187,7 +192,10 @@ export function Dental() {
             <header className="da-head">
               <span className="da-eyebrow">Tratamientos</span>
               <h2>Todo lo que necesitas, en un solo lugar.</h2>
-              <p>Precios de ejemplo. El presupuesto final depende de tu evaluación.</p>
+              <p>
+                Precios de ejemplo. El presupuesto final depende de tu
+                evaluación.
+              </p>
             </header>
             <div className="da-grid">
               {treatments.map((t) => (
@@ -264,20 +272,35 @@ export function Dental() {
               <span className="da-eyebrow">Contacto</span>
               <h2>Tu primera consulta empieza acá.</h2>
               <p>
-                Escríbenos por WhatsApp o déjanos tus datos. Coordinamos una hora que te acomode y
-                te entregamos el presupuesto en la misma visita.
+                Esta interfaz es un concepto de clínica dental. La selección de
+                tratamiento y fecha no se envía a una agenda ni confirma una
+                hora real.
               </p>
-              <a
-                className="da-btn da-btn-light"
-                href={contactHref(
-                  'Hola Samuel, vi la demo de Dental Aurora y quiero una web similar para mi negocio.',
-                )}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Quiero una web así
-              </a>
-              <p className="demo-note">Sitio de demostración: no agenda horas reales.</p>
+              {samples && !platformHref ? (
+                <button className="da-btn da-btn-light" type="button" disabled>
+                  {locale === 'en'
+                    ? 'Fiverr link not available yet'
+                    : 'Enlace a Fiverr aún no disponible'}
+                </button>
+              ) : (
+                <a
+                  className="da-btn da-btn-light"
+                  href={contactTarget(
+                    'Hola Samuel, vi la demo de Dental Aurora y quiero una web similar para mi negocio.',
+                  )}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {samples
+                    ? locale === 'en'
+                      ? 'Continue on Fiverr'
+                      : 'Continuar en Fiverr'
+                    : 'Quiero una web así'}
+                </a>
+              )}
+              <p className="demo-note">
+                Sitio de demostración: no agenda horas reales.
+              </p>
             </div>
             <div className="da-info">
               <div>
@@ -309,7 +332,9 @@ export function Dental() {
             </span>
             Dental Aurora
           </span>
-          <p>© {new Date().getFullYear()} Dental Aurora. Sitio de demostración.</p>
+          <p>
+            © {new Date().getFullYear()} Dental Aurora. Sitio de demostración.
+          </p>
         </div>
       </footer>
     </div>
