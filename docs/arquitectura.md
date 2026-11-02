@@ -1,59 +1,41 @@
 # Arquitectura y flujo de datos
 
-## Alcance implementado
-
-SPA estática con React, TypeScript, Vite y React Router. El navegador ejecuta la interfaz; GitHub Pages sirve el bundle y los recursos. No hay servidor de aplicación, API propia, base de datos ni autenticación.
+SPA estática con React, TypeScript, Vite y React Router. El navegador ejecuta la interfaz; GitHub Pages sirve el bundle. No hay API propia, base de datos ni autenticación.
 
 ## Módulos
 
 | Módulo | Responsabilidad |
 | --- | --- |
-| `src/App.tsx` | Declarar rutas, cargar las demos con `lazy`/`Suspense` y gestionar desplazamiento al cambiar de ruta. |
-| `src/pages/Home.tsx` | Componer la página principal a partir de secciones. |
-| `src/sections/` | Implementar bloques de interfaz de la página principal. |
-| `src/pages/demos/` | Mantener las páginas de demostración y sus estilos. Miga & Miel agrupa implementación, datos y CSS en `miga/`. |
-| `src/components/` | Compartir componentes de navegación, iconos, avisos y revelado de contenido. |
-| `src/data/` | Declarar contenido y tipos usados por las secciones. |
-| `src/config/site.ts` | Centralizar configuración y construir enlaces de WhatsApp o correo. |
-| `src/hooks/` | Encapsular comportamiento reutilizable, incluidos metadatos por página. |
-| `src/styles/` | Definir estilos generales y utilidades. |
+| `src/App.tsx` | Resolver rutas explícitas, cargar demos con lazy/Suspense y gestionar el desplazamiento. |
+| `src/presentation/` | Portada, contenido localizado, funciones de rutas, configuración de acciones derivada del contexto y marco de navegación de demos. |
+| `src/pages/demos/` | Interfaces y estilos de cada demo; Miga & Miel agrupa componentes y datos en `miga/`. |
+| `src/components/` | Avisos y recursos de interfaz compartidos. |
+| `src/config/site.ts` | Configuración de enlaces y construcción de mensajes externos del contexto personal. |
+| `src/hooks/usePageMeta.ts` | Metadatos, idioma y alternativas por ruta en el cliente. |
+| `src/styles/` | Fuentes locales y estilos base. |
 
-## Flujo de renderizado
+## Flujo
 
-1. `index.html` carga la entrada de React.
-2. React Router resuelve la URL en `App.tsx`.
-3. La página principal se compone con secciones; cada demo carga su módulo bajo demanda.
-4. Los componentes leen configuración y datos tipados y renderizan la interfaz.
-5. Las interacciones actualizan estado local; no se sincronizan con una API.
+1. El fallback de GitHub Pages restaura la URL si el acceso es directo a una ruta interna.
+2. App selecciona portada o demo. Solo la entrada `/` consulta idioma guardado/preferencia de navegador.
+3. La URL determina idioma y contexto; componentes compartidos leen contenido localizado y configuración.
+4. Las interacciones actualizan estado local. El formulario personal prepara un enlace; no transmite a una API.
+5. Las demos conservan su identidad y cargan por ruta. En muestras se elimina el contacto externo y se conserva el regreso al mismo contexto.
 
-## Interacciones de Miga & Miel
+Detalles e invariantes: [portada y navegación](presentation.md).
 
-- Seleccionar un producto abre un `<dialog>` nativo con su ficha.
-- Preparar una consulta actualiza la selección local, cierra el diálogo y lleva a la sección correspondiente.
-- El enlace externo se construye con el contexto seleccionado; la aplicación no puede confirmar que el mensaje fue enviado.
-- El menú utiliza estado local y detección del breakpoint. En móvil cerrado queda inerte; al pasar a escritorio se cierra y se libera el contenido.
-- Los efectos que registran listeners o bloquean desplazamiento tienen limpieza al cambiar de estado o desmontarse.
+## Miga & Miel
 
-## Estilos y recursos
+Seleccionar un producto abre un dialog nativo. Preparar la consulta actualiza la selección, cierra el diálogo y desplaza a la sección correspondiente. El menú usa estado local y breakpoint; el contenido se libera al pasar a escritorio. Los efectos limpian listeners y bloqueo de scroll.
 
-Las demos conservan CSS propio para evitar acoplar sus composiciones. Miga & Miel utiliza fotografías y fuentes locales, variantes de imagen y carga diferida de recursos secundarios. La procedencia está en [recursos y licencias](assets-licencias.md).
+El destino de la acción depende del contexto. Sin URL de plataforma, la acción en muestras queda deshabilitada. En contexto personal se conserva la consulta externa; el sitio no puede confirmar su envío.
 
-Los documentos de diseño describen decisiones y objetivos; no sustituyen mediciones del bundle o del navegador. Los resultados deben indicar la versión y el entorno comprobados.
+## Recursos y despliegue
 
-## Build y despliegue
+Cada demo mantiene CSS propio. Fotografías y fuentes locales de Miga & Miel tienen [procedencia documentada](assets-licencias.md). Los objetivos de diseño no sustituyen mediciones con versión y entorno.
 
-El workflow utiliza Node.js 22, instala con `npm ci`, ejecuta `npm run build` y publica `landing_page/dist` mediante las acciones de GitHub Pages. El build incluye comprobación de TypeScript.
+El workflow usa Node.js 22, npm ci, pruebas de contratos y build. Publica `landing_page/dist` con GitHub Pages. Un workflow de PR valida tests y compilación sin desplegar. Ver [despliegue](github-pages.md).
 
-Para navegación directa a rutas internas, `public/404.html` redirige a la entrada y el script de `index.html` restaura la URL. `tools/serve.py` permite previsualizar el build local con fallback SPA. Detalles en [despliegue](github-pages.md).
+## Evolución
 
-## Límites y evolución
-
-Los módulos de agenda son trabajo pendiente. Antes de implementarlos deben definirse entidades, contratos HTTP, estados de reserva, validación del servidor, autorización, persistencia y despliegue independiente del frontend estático. La exclusión de reservas concurrentes del mismo cupo debe comprobarse en la capa de persistencia; desactivar un botón en el navegador no resuelve la concurrencia.
-
-No se ha elegido una arquitectura backend ni se asume que las dos agendas deban compartir módulos. Los criterios están en [plan de implementación](plan-redisenio-landings.md).
-
-## Requisitos de la próxima portada
-
-Planificados, no implementados: rutas ES/EN y contextos personal/muestras externas (#45 y #46). Compartir secciones y demos; separar contenido localizado y configuración de acciones. La URL debe identificar idioma y contexto de forma reproducible. No usar referrer para ocultar enlaces.
-
-El destino de plataforma será opcional y tendrá un estado explícito no disponible hasta configurarse. La ausencia de URL no debe crear una acción alternativa de contacto. El contexto personal mantiene enlaces profesionales y composición de mensajes externos. Consultar los [criterios de implementación](plan-redisenio-landings.md).
+Las agendas siguen pendientes. Antes de implementar se deben definir entidades, contratos HTTP, estados, validación del servidor, autorización, persistencia y despliegue independiente. Evitar reservas concurrentes exige comprobaciones en persistencia; desactivar un botón en la interfaz no basta. No se ha elegido backend ni arquitectura compartida para las dos agendas.

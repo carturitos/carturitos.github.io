@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { localizedPath, routeDetails } from '../presentation/routing'
 import { site } from '../config/site'
 
 type PageMetaOptions = {
@@ -11,8 +13,14 @@ type PageMetaOptions = {
   noindex?: boolean
 }
 
-function upsertMeta(attribute: 'name' | 'property', key: string, content: string): void {
-  let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`)
+function upsertMeta(
+  attribute: 'name' | 'property',
+  key: string,
+  content: string,
+): void {
+  let element = document.head.querySelector<HTMLMetaElement>(
+    `meta[${attribute}="${key}"]`,
+  )
   if (!element) {
     element = document.createElement('meta')
     element.setAttribute(attribute, key)
@@ -35,8 +43,16 @@ export function usePageMeta({
   image,
   noindex = false,
 }: PageMetaOptions): void {
+  const { pathname } = useLocation()
+  const { locale, channel } = routeDetails(pathname)
+  const effectivePath = noindex ? path : pathname
   useEffect(() => {
-    const url = `${site.url}${path}`
+    const url = `${site.url}${effectivePath}`
+    document.documentElement.lang = locale === 'en' ? 'en' : 'es-CL'
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', '#193e33')
+    upsertMeta('property', 'og:locale', locale === 'en' ? 'en_US' : 'es_CL')
     document.title = title
 
     upsertMeta('name', 'description', description)
@@ -47,13 +63,18 @@ export function usePageMeta({
     upsertMeta('name', 'twitter:title', title)
     upsertMeta('name', 'twitter:description', description)
 
-    if (image) {
-      const absolute = image.startsWith('http') ? image : `${site.url}${image}`
+    {
+      const socialImage = image ?? '/og.png'
+      const absolute = socialImage.startsWith('http')
+        ? socialImage
+        : `${site.url}${socialImage}`
       upsertMeta('property', 'og:image', absolute)
       upsertMeta('name', 'twitter:image', absolute)
     }
 
-    let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    let canonical = document.head.querySelector<HTMLLinkElement>(
+      'link[rel="canonical"]',
+    )
     if (!canonical) {
       canonical = document.createElement('link')
       canonical.setAttribute('rel', 'canonical')
@@ -61,11 +82,35 @@ export function usePageMeta({
     }
     canonical.setAttribute('href', url)
 
-    const robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]')
-    if (noindex) {
+    document.head
+      .querySelectorAll('link[data-presentation-alternate]')
+      .forEach((el) => el.remove())
+    if (!noindex) {
+      for (const language of ['es', 'en'] as const) {
+        const link = document.createElement('link')
+        link.rel = 'alternate'
+        link.hreflang = language
+        link.href = `${site.url}${localizedPath(pathname, language)}`
+        link.dataset.presentationAlternate = 'true'
+        document.head.appendChild(link)
+      }
+    }
+    const robots = document.head.querySelector<HTMLMetaElement>(
+      'meta[name="robots"]',
+    )
+    if (noindex || channel === 'samples') {
       upsertMeta('name', 'robots', 'noindex, follow')
     } else if (robots) {
       robots.remove()
     }
-  }, [title, description, path, image, noindex])
+  }, [
+    title,
+    description,
+    effectivePath,
+    pathname,
+    image,
+    noindex,
+    locale,
+    channel,
+  ])
 }

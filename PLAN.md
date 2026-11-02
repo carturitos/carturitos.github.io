@@ -9,6 +9,8 @@
 
 ## Próximas etapas
 
+La portada bilingüe y los contextos de navegación tienen implementación en revisión en una rama de desarrollo. No se consideran publicados ni cerrados hasta integrar la revisión visual y la validación correspondiente.
+
 | Orden | Proyecto | Entregable técnico | Tarea |
 | --- | --- | --- | --- |
 | 1 | Página principal | Tema claro, varias secciones, tres demos con igual peso, componentes y movimiento accesible. Revisar proporciones antes de implementar. | [#39](https://github.com/carturitos/carturitos.github.io/issues/39) |

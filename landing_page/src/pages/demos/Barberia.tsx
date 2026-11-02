@@ -1,5 +1,5 @@
 import { DemoNotice } from '../../components/DemoNotice'
-import { contactHref } from '../../config/site'
+import { usePresentation } from '../../presentation/usePresentation'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import './barberia.css'
 
@@ -47,6 +47,7 @@ const testimonials = [
 ]
 
 export function Barberia() {
+  const { samples, platformHref, contactTarget, locale } = usePresentation()
   usePageMeta({
     title: 'Corte Real — Demo de barbería | Samuel Gutiérrez',
     description:
@@ -78,15 +79,17 @@ export function Barberia() {
         <section className="cr-hero" id="inicio">
           <div className="cr-wrap cr-hero-grid">
             <div className="cr-hero-copy">
-              <span className="cr-eyebrow">Barbería · Providencia, Santiago</span>
+              <span className="cr-eyebrow">
+                Barbería · Providencia, Santiago
+              </span>
               <h1>
                 Corte clásico,
                 <br />
                 actitud <em>moderna.</em>
               </h1>
               <p>
-                Barbería de barrio con estándar de autor. Reserva en línea, llega a tu hora y sal
-                con el corte exacto que pediste.
+                Barbería de barrio con estándar de autor. Reserva en línea,
+                llega a tu hora y sal con el corte exacto que pediste.
               </p>
               <div className="cr-hero-actions">
                 <a className="cr-btn cr-btn-gold" href="#reservar">
@@ -145,7 +148,9 @@ export function Barberia() {
                 </article>
               ))}
             </div>
-            <p className="cr-note">Precios de ejemplo; no corresponden a una oferta comercial.</p>
+            <p className="cr-note">
+              Precios de ejemplo; no corresponden a una oferta comercial.
+            </p>
           </div>
         </section>
 
@@ -192,19 +197,36 @@ export function Barberia() {
               <span className="cr-eyebrow">Reserva tu hora</span>
               <h2>Te esperamos en Providencia.</h2>
               <p>
-                Escríbenos por WhatsApp con el día y la hora que prefieres. Confirmamos en minutos
-                y te guardamos el cupo.
+                Esta interfaz muestra cómo presentar una barbería. No consulta
+                disponibilidad ni guarda reservas; los horarios y datos del
+                local son ilustrativos.
               </p>
-              <a
-                className="cr-btn cr-btn-gold cr-btn-lg"
-                href={contactHref(
-                  'Hola Samuel, vi la demo de Corte Real y quiero una web similar para mi negocio.',
-                )}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Quiero una web así
-              </a>
+              {samples && !platformHref ? (
+                <button
+                  className="cr-btn cr-btn-gold cr-btn-lg"
+                  type="button"
+                  disabled
+                >
+                  {locale === 'en'
+                    ? 'Fiverr link not available yet'
+                    : 'Enlace a Fiverr aún no disponible'}
+                </button>
+              ) : (
+                <a
+                  className="cr-btn cr-btn-gold cr-btn-lg"
+                  href={contactTarget(
+                    'Hola Samuel, vi la demo de Corte Real y quiero una web similar para mi negocio.',
+                  )}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {samples
+                    ? locale === 'en'
+                      ? 'Continue on Fiverr'
+                      : 'Continuar en Fiverr'
+                    : 'Quiero una web así'}
+                </a>
+              )}
               <p className="cr-note">
                 Este sitio es una demostración: no reserva horas reales.
               </p>
@@ -236,7 +258,9 @@ export function Barberia() {
           <a className="cr-logo" href="#inicio">
             CORTE<span>REAL</span>
           </a>
-          <p>© {new Date().getFullYear()} Corte Real. Sitio de demostración.</p>
+          <p>
+            © {new Date().getFullYear()} Corte Real. Sitio de demostración.
+          </p>
         </div>
       </footer>
     </div>
