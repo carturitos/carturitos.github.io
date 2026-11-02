@@ -15,7 +15,7 @@
 2. **El problema no es el código: es la identidad.** Las tres demos comparten el mismo esqueleto (hero a dos columnas → franja de features → grid de tarjetas → pasos → bloque de contacto) y resuelven la imagen con gradientes y formas CSS. Se perciben como plantillas recoloreadas, exactamente lo que el plan maestro busca revertir.
 3. **Hay una brecha de honestidad comercial.** Quedan testimonios ficticios (aunque etiquetados), una dirección y un horario inventados presentados como datos operativos en Miga & Miel, y precios sin marca de referenciales en varias tarjetas. El brief pide lo contrario.
 4. **Accesibilidad y rendimiento tienen deuda concreta y medible:** los tres demos ocultan la navegación en móvil sin ofrecer menú alternativo, no declaran `prefers-reduced-motion` en sus hojas de estilo y cargan cuatro familias tipográficas por CDN para todas las rutas.
-5. **La planificación existente está bien encaminada y es reutilizable.** 31 issues ya están en el Project n.º 2; #14, #15, #6 y #28 cubren imágenes, móvil, medición y Fiverr. Conviene **reutilizarlas** y añadir solo tres tareas nuevas, no duplicar el tablero.
+5. **La planificación existente está bien encaminada y es reutilizable.** 31 issues ya están en el Project n.º 2; #14, #15, #6 cubren imágenes, móvil y medición. Conviene **reutilizarlas** y añadir solo tres tareas nuevas, no duplicar el tablero.
 
 **Veredicto:** el proyecto necesita una capa de dirección de arte y un sistema de assets, no una reescritura. La Fase 1 puede ejecutarse sobre la estructura actual con cambios quirúrgicos por demo.
 
@@ -34,7 +34,7 @@
 | Contenido | `src/data/*.ts` + `src/config/site.ts` (WhatsApp real: `56951048157`) |
 | Assets | Solo capturas `.png` en `public/shots/`; sin fotografías de producto |
 | Pruebas | No hay tests automatizados ni lint; solo `typecheck` |
-| Project | n.º 2 “Lanzamiento freelance” con 31 items y campos Prioridad / Área / Semana |
+| Project | n.º 2 con 31 items y campos Prioridad / Área / Semana en la revisión original |
 
 Rutas actuales: `/`, `/demos/barberia`, `/demos/dental`, `/demos/pasteleria`, `*` → 404.
 
@@ -180,7 +180,6 @@ Riesgos: el `<link>` a Google Fonts en `index.html:30-35` es render-blocking y a
 | Fotografías con licencia y optimización | **#14** | Se reutiliza; se le agrega el *shot list* de Miga & Miel |
 | Revisión en celular real | **#15** | Se reutiliza; se le agrega el checklist móvil de la nueva demo |
 | Lighthouse y accesibilidad | **#6** | Se reutiliza; se le agregan los objetivos por demo |
-| Fiverr | **#28** | Sin cambios; depende del cierre de Fase 1 |
 | Base técnica compartida (fuentes, tokens, primitivas) | — | **Nueva tarea** |
 | Implementación de Miga & Miel | — | **Nueva tarea** |
 | Corte Real y Dental Aurora | — | **Nueva tarea** (bloqueada hasta cerrar Miga & Miel) |

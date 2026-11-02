@@ -1,66 +1,57 @@
-# Carturitos · Desarrollo web para negocios
+# carturitos.github.io
 
-Proyecto de Samuel Gutiérrez para presentar y desarrollar una oferta freelance de **landing pages y catálogos de consulta** para pequeños negocios. Reúne el sitio de presentación, las demostraciones y la documentación que guía su evolución.
+Aplicación web en **React y TypeScript** con una página principal y tres demos independientes. Este repositorio contiene el código fuente, los recursos visuales, las decisiones de interfaz y el flujo de despliegue en GitHub Pages.
 
-El objetivo es construir una propuesta clara para trabajar con clientes a través de Fiverr, Workana y contacto directo, con un alcance definido y entregas documentadas.
+**[Ver aplicación](https://carturitos.github.io/)** · **[Arquitectura](docs/arquitectura.md)** · **[Hoja de ruta](PLAN.md)**
 
-**[Explorar el sitio](https://carturitos.github.io/)** · **[Ver Miga & Miel](https://carturitos.github.io/demos/pasteleria)** · **[Consultar un proyecto](https://carturitos.github.io/#contacto)**
+## Proyectos y rutas
 
-## Propuesta de servicios
-
-- **Landing pages:** presentación de un negocio, sus servicios y formas de contacto, adaptada a móviles.
-- **Catálogos de consulta:** productos o servicios con imágenes y fichas, con mensajes preparados para WhatsApp o correo.
-
-La propuesta comercial está en desarrollo. El alcance, valor, plazo, ajustes y soporte se definen por escrito para cada proyecto. Los sistemas de reservas y gestión forman parte de la evolución prevista y todavía no se ofrecen como servicios disponibles.
-
-## Demostraciones
-
-Los negocios y contenidos son conceptuales; no se presentan como trabajos realizados para clientes.
-
-| Proyecto | Qué muestra hoy | Evolución prevista |
+| Ruta | Proyecto | Implementación actual |
 | --- | --- | --- |
-| **[Miga & Miel](https://carturitos.github.io/demos/pasteleria)** | Referencia principal de diseño: catálogo explorable, fichas de producto y consulta de ejemplo. | Conservar su identidad como muestra del tipo de web que se busca ofrecer. |
-| **[Corte Real](https://carturitos.github.io/demos/barberia)** | Demo de barbería con servicios y contacto. | Revisar la landing y definir después un MVP de reservas con disponibilidad real. |
-| **[Dental Aurora](https://carturitos.github.io/demos/dental)** | Demo informativa de clínica dental. | Revisar la presentación y el flujo de solicitud de horas; evaluar una agenda administrativa posteriormente. |
+| `/` | Página principal | Composición por secciones, navegación y formulario que genera un enlace externo con un mensaje. |
+| `/demos/pasteleria` | Miga & Miel | Catálogo tipado, detalle con `<dialog>`, selección de producto, acordeón y menú responsive. |
+| `/demos/barberia` | Corte Real | Demo de interfaz de barbería; pendiente de revisión visual y definición de una agenda. |
+| `/demos/dental` | Dental Aurora | Demo de interfaz de clínica dental; pendiente de revisar el flujo de solicitud de horas. |
+| `*` | Página no encontrada | Vista 404 de React Router. |
 
-Las demos actuales no procesan compras ni confirman reservas. El formulario de contacto prepara un mensaje para enviarlo desde WhatsApp o correo; no almacena los datos en un backend.
+Actualmente es una aplicación frontend: no incluye API propia, base de datos, autenticación ni persistencia de reservas. Los formularios preparan mensajes para WhatsApp o correo; no confirman su envío.
 
-## Avance del proyecto
+## Arquitectura
 
-- **Completado:** publicación en GitHub Pages, diseño de Miga & Miel y ajustes de navegación, contacto y alcance comercial ([PR #37](https://github.com/carturitos/carturitos.github.io/pull/37), [PR #42](https://github.com/carturitos/carturitos.github.io/pull/42)).
-- **Siguiente:** definir contenido, estructura y propuesta visual de la landing principal de Samuel, con Miga & Miel como pieza destacada ([#39](https://github.com/carturitos/carturitos.github.io/issues/39)).
-- **Después:** desarrollar las propuestas de [Corte Real (#40)](https://github.com/carturitos/carturitos.github.io/issues/40) y [Dental Aurora (#41)](https://github.com/carturitos/carturitos.github.io/issues/41), con alcance funcional revisado antes de implementar sistemas.
-- **Antes de la apertura comercial:** completar validaciones de contacto, dispositivo real y calidad publicada, y definir condiciones de contratación y facturación.
+- **React Router** define las rutas en `src/App.tsx`. Las demos se importan mediante `lazy` y se renderizan dentro de `Suspense`.
+- **Componentes y secciones** separan la interfaz compartida de las páginas de cada demo.
+- **Datos tipados** en `src/data/` y configuración en `src/config/site.ts` separan contenido y renderizado.
+- **Estado local de React** controla menú y selecciones de interfaz; no existe un store global.
+- **CSS por demo** mantiene estilos e identidad visual propios; `global.css` contiene estilos generales.
+- **Recursos locales** incluyen fotografías y fuentes de Miga & Miel; su procedencia se registra en la documentación.
+- **GitHub Actions** compila y despliega los archivos estáticos. Un fallback restaura las rutas de la SPA al acceder directamente desde GitHub Pages.
 
-La [hoja de ruta](PLAN.md) resume las etapas. Los [criterios de cada propuesta](docs/plan-redisenio-landings.md) definen sus límites y aceptación. El [tablero de trabajo](https://github.com/users/carturitos/projects/2) organiza las tareas por etapa (requiere acceso al proyecto).
+Consulta [arquitectura y flujo de datos](docs/arquitectura.md) para los límites entre módulos y el detalle de las interacciones.
 
-## Implementación
-
-React, TypeScript y Vite para el sitio; GitHub Actions para compilación y publicación en GitHub Pages. Incluye metadatos, Open Graph, `robots.txt`, `sitemap.xml` y fallback de rutas mediante `404.html`.
-
-Desarrollado con apoyo de IA en implementación y documentación, con revisión del código y de las decisiones técnicas por Samuel.
-
-### Estructura
+## Estructura
 
 ```text
-.github/workflows/deploy.yml   Compilación y despliegue
+.github/workflows/deploy.yml   Build y despliegue
 landing_page/
-  public/                     Imágenes, metadatos y archivos públicos
+  index.html                  Entrada HTML y restauración de rutas
+  public/                     Imágenes, fuentes, metadatos y fallback 404
   src/
-    config/site.ts            Contacto y datos del sitio
-    data/                     Servicios, demos, proceso y preguntas
+    App.tsx                   Rutas, Suspense y desplazamiento entre páginas
+    components/               Componentes compartidos
+    config/                   Configuración y helpers de enlaces
+    data/                     Contenido y modelos tipados
+    hooks/                    Hooks de metadatos y comportamiento
+    pages/                    Página principal, demos y vista 404
     sections/                 Secciones de la página principal
-    pages/                    Inicio, demos y página 404
-    components/               Componentes de interfaz
     styles/                   Estilos generales
-docs/                         Criterios y documentación de trabajo
-PLAN.md                       Hoja de ruta vigente
-tools/serve.py                Previsualización del build con fallback SPA
+docs/                         Arquitectura, diseño, recursos y criterios técnicos
+PLAN.md                       Estado y próximos cambios
+tools/serve.py                Servidor local con fallback SPA
 ```
 
-### Desarrollo local
+## Desarrollo local
 
-Requiere Node.js y npm (el despliegue utiliza la versión indicada en el workflow).
+Requisitos: **Node.js 22** (versión utilizada en CI), npm y Python 3 si se utiliza el servidor de previsualización.
 
 ```bash
 cd landing_page
@@ -68,19 +59,39 @@ npm ci
 npm run dev
 ```
 
-Vite muestra la URL local en la terminal. Para comprobar y previsualizar la versión de producción:
+Vite muestra la URL local en la terminal.
+
+### Comprobaciones y build
+
+Desde `landing_page/`:
 
 ```bash
 npm run typecheck
 npm run build
-cd ..
+```
+
+`typecheck` ejecuta TypeScript sin emitir archivos; `build` ejecuta TypeScript y genera el bundle con Vite en `dist/`. No hay una suite de tests automatizados ni un comando de lint configurados actualmente.
+
+Para probar las rutas del build con fallback SPA, desde la raíz del repositorio:
+
+```bash
 python3 tools/serve.py 4173 landing_page/dist
 ```
 
-La previsualización queda en `http://127.0.0.1:4173`.
+URL: `http://127.0.0.1:4173`.
 
-### Configuración y publicación
+## Estado técnico
 
-Los datos de contacto se configuran en `landing_page/src/config/site.ts`. WhatsApp utiliza formato internacional sin `+` ni espacios; si está vacío, el contacto utiliza correo. LinkedIn es opcional.
+El rediseño de Miga & Miel y la carga diferida de demos se integraron en [PR #37](https://github.com/carturitos/carturitos.github.io/pull/37). Los ajustes del menú responsive, desplazamiento del diálogo y estados del formulario se completaron en [PR #42](https://github.com/carturitos/carturitos.github.io/pull/42).
 
-Cada push a `main` ejecuta el workflow de publicación. Consulta la [guía de GitHub Pages](docs/github-pages.md) para los detalles de despliegue.
+Los próximos cambios son la revisión de la página principal y la definición de los módulos de agenda. El backend y la persistencia son trabajo futuro, no parte de la arquitectura implementada. Las comprobaciones en dispositivo físico y las mediciones de rendimiento publicado siguen pendientes.
+
+## Documentación
+
+- [Arquitectura y flujo de datos](docs/arquitectura.md)
+- [Hoja de ruta](PLAN.md) y [criterios de implementación](docs/plan-redisenio-landings.md)
+- [Configuración, rutas y despliegue](docs/github-pages.md)
+- [Diseño de Miga & Miel](docs/diseno-miga-miel.md)
+- [Recursos y licencias](docs/assets-licencias.md)
+
+Autor: Samuel Gutiérrez. Implementación y documentación desarrolladas con asistencia de IA y revisión del código.
