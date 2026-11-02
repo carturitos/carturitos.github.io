@@ -44,9 +44,6 @@ python tools/serve.py 4173 landing_page/dist
 
 Abre `http://127.0.0.1:4173`.
 
-> Si el build falla con `spawn EPERM` dentro del sandbox de DSH, es una restricción del
-> sandbox (esbuild necesita un proceso hijo). En una terminal normal funciona. El
-> deploy en GitHub Actions no tiene ese problema.
 
 ## Publicar
 

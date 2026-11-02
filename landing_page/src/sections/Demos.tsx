@@ -11,8 +11,8 @@ export function Demos() {
           <span className="kicker">02 — Demos</span>
           <h2>Mira lo que puedo construir para tu negocio.</h2>
           <p>
-            Tres proyectos conceptuales con identidades y enfoques distintos. Entra, pruébalos en
-            tu celular y pide uno adaptado a tu negocio.
+            Miga &amp; Miel marca la dirección visual de la propuesta. Barbería y clínica son demos
+            existentes que evolucionarán en etapas posteriores. No representan clientes reales.
           </p>
         </Reveal>
 

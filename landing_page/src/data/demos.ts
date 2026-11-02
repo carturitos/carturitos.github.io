@@ -14,8 +14,8 @@ export const demos: Demo[] = [
     name: 'Corte Real',
     sector: 'Barbería',
     summary:
-      'Reservas por WhatsApp, carta de servicios con precios y galería. Una imagen oscura y directa para un negocio con carácter.',
-    highlights: ['Reserva en 1 clic', 'Precios visibles', 'Galería'],
+      'Demo de barbería con servicios y contacto. Pendiente de evolucionar hacia una propuesta de landing; la agenda real se definirá en otra etapa.',
+    highlights: ['Demo en evolución', 'Servicios', 'Contacto'],
     shot: '/shots/barberia.png',
     accent: '#c9a227',
   },
@@ -24,8 +24,8 @@ export const demos: Demo[] = [
     name: 'Dental Aurora',
     sector: 'Clínica dental',
     summary:
-      'Agenda de horas, tratamientos explicados sin tecnicismos y señales de confianza. Diseño limpio, luminoso y cercano.',
-    highlights: ['Agenda de horas', 'Tratamientos', 'Testimonios'],
+      'Demo informativa de clínica, pendiente de redefinir su flujo de solicitud de horas. No constituye una agenda clínica operativa.',
+    highlights: ['Demo en evolución', 'Información', 'Solicitud de contacto'],
     shot: '/shots/dental.png',
     accent: '#0e7490',
   },
@@ -34,8 +34,8 @@ export const demos: Demo[] = [
     name: 'Miga & Miel',
     sector: 'Pastelería artesanal',
     summary:
-      'Catálogo de tortas y encargos por WhatsApp, con fechas especiales y un tono cálido que se siente hecho a mano.',
-    highlights: ['Catálogo', 'Encargos', 'Fechas especiales'],
+      'Referente visual de la propuesta: catálogo explorable y consulta de ejemplo a Carturitos. No recibe pedidos de pastelería.',
+    highlights: ['Referente visual', 'Catálogo', 'Consulta de ejemplo'],
     shot: '/shots/pasteleria.png',
     accent: '#b45309',
   },

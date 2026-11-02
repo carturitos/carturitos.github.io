@@ -3,18 +3,10 @@ import { contactHref, hasWhatsapp, site } from '../config/site'
 import { Reveal } from '../components/Reveal'
 import { ArrowUpRight, Check, Clock, Mail, MapPin, WhatsApp } from '../components/Icons'
 
-const serviceOptions = [
-  'Landing page',
-  'Sitio web completo',
-  'Login / sistema de usuarios',
-  'Panel de administración',
-  'Revisión de seguridad',
-  'Mantención mensual',
-  'Aún no lo tengo claro',
-]
+const serviceOptions = ['Landing page', 'Catálogo de consulta', 'Sitio de presentación', 'Aún no lo tengo claro']
 
 export function Contact() {
-  const [sent, setSent] = useState(false)
+  const [prepared, setPrepared] = useState(false)
   const [copied, setCopied] = useState(false)
 
   async function copyEmail() {
@@ -50,7 +42,7 @@ export function Contact() {
     } else {
       window.location.href = url
     }
-    setSent(true)
+    setPrepared(true)
   }
 
   return (
@@ -58,10 +50,10 @@ export function Contact() {
       <div className="container contact-grid">
         <Reveal className="contact-copy">
           <span className="kicker">06 — Contacto</span>
-          <h2>Cuéntame qué necesitas y te digo cuánto cuesta.</h2>
+          <h2>Conversemos sobre tu próxima página web.</h2>
           <p>
-            Respondo en menos de 24 horas con una propuesta clara: alcance, precio y fecha de
-            entrega. Sin compromiso y sin letra chica.
+            La propuesta freelance está en preparación. Alcance, valor, plazo, ajustes y soporte
+            se definirán por escrito para cada proyecto.
           </p>
 
           <div className="contact-actions">
@@ -94,7 +86,7 @@ export function Contact() {
             </li>
             <li>
               <Clock size={16} />
-              {site.responseTime} · lunes a viernes, 9:00 a 19:00
+              {site.responseTime}
             </li>
             <li>
               <ArrowUpRight size={16} />
@@ -165,15 +157,15 @@ export function Contact() {
             </div>
 
             <button className="btn btn-accent" type="submit">
-              Enviar mensaje
+              Preparar mensaje
               <ArrowUpRight size={17} />
             </button>
 
             <div className="form-status" aria-live="polite">
-              {sent ? (
+              {prepared ? (
                 <p className="form-success">
-                  ¡Listo! Se abrió {hasWhatsapp ? 'WhatsApp' : 'tu correo'} con el mensaje
-                  preparado. Si no ocurrió nada, escríbeme directo a {site.email}.
+                  El mensaje está preparado para abrirse en {hasWhatsapp ? 'WhatsApp' : 'tu correo'}.
+                  Debes enviarlo allí. Si no se abrió, usa los enlaces de contacto de esta sección.
                 </p>
               ) : (
                 <p className="form-note">

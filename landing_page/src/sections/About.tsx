@@ -19,42 +19,42 @@ export function About() {
       <div className="container about-grid">
         <Reveal className="about-copy">
           <span className="kicker">04 — Sobre mí</span>
-          <h2>Programo, y también pienso en cómo te pueden atacar.</h2>
+          <h2>Desarrollo web con atención al producto y sus usuarios.</h2>
           <p>
             Soy <strong>Samuel Gutiérrez</strong>, analista programador y estudiante de Ingeniería
-            en Informática con mención en Ciberseguridad. Construyo aplicaciones full stack: React
-            y Angular en el frontend, Node.js, NestJS y PostgreSQL en el backend.
+            en Informática y Ciberseguridad. Tengo experiencia colaborando en desarrollo con Angular,
+            TypeScript y Node.js; actualmente refuerzo backend con NestJS y PostgreSQL y practico React.
           </p>
           <p>
-            Uso herramientas de IA para avanzar rápido, pero reviso y entiendo cada línea que
-            entrego. Eso importa especialmente en autenticación: un login mal hecho no es un
-            detalle estético, es una puerta abierta.
+            Uso IA para consultar alternativas y apoyar la implementación, revisando el código
+            y desarrollando mayor autonomía. Mi oferta inicial se centra en páginas de presentación
+            y catálogos de consulta.
           </p>
           <p>
-            Mi objetivo es simple: que tengas una web o un sistema que funcione, se vea bien y no te
-            dé problemas. Y que puedas recomendarme sin miedo.
+            Miga &amp; Miel muestra la dirección visual que quiero ofrecer. Las funcionalidades de
+            gestión y reservas se explorarán en etapas posteriores antes de ofrecerlas como servicio.
           </p>
 
           <ul className="security-list">
             <li>
               <Lock size={18} />
               <div>
-                <strong>Autenticación con estándares</strong>
-                <span>Contraseñas con hash, JWT con expiración y refresh tokens.</span>
+                <strong>Aprendizaje de backend</strong>
+                <span>Proyecto de autenticación con NestJS y PostgreSQL en desarrollo.</span>
               </div>
             </li>
             <li>
               <Shield size={18} />
               <div>
-                <strong>Validación en ambos lados</strong>
-                <span>No confío solo en el frontend: el backend valida todo de nuevo.</span>
+                <strong>Oferta en preparación</strong>
+                <span>Alcance, pruebas, plazo y soporte acordados para cada entrega.</span>
               </div>
             </li>
             <li>
               <Code size={18} />
               <div>
-                <strong>Código tuyo, sin cajas negras</strong>
-                <span>Te entrego el repositorio y los accesos, documentados.</span>
+                <strong>Entrega y mantenimiento</strong>
+                <span>Documentación de configuración, contenidos y accesos según lo acordado.</span>
               </div>
             </li>
           </ul>
@@ -81,11 +81,11 @@ export function About() {
               </div>
               <div>
                 <dt>Enfoque</dt>
-                <dd>Web, autenticación y paneles</dd>
+                <dd>Landing pages y catálogos de consulta</dd>
               </div>
               <div>
                 <dt>Disponibilidad</dt>
-                <dd>Proyectos freelance</dd>
+                <dd>Propuesta freelance en preparación</dd>
               </div>
             </dl>
 

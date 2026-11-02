@@ -1,3 +1,5 @@
+> Diagnóstico histórico previo al rediseño de Miga & Miel. No describe por completo el estado actual: PR #37 incorporó navegación móvil, imágenes, fuentes locales y carga por rutas. Consultar PLAN.md para el trabajo vigente.
+
 # Auditoría técnica y de producto — Fase 1
 
 **Fecha:** 29 de octubre de 2026

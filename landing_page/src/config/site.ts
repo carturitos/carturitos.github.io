@@ -15,8 +15,8 @@ export const site = {
   github: 'https://github.com/carturitos',
   linkedin: '',
   url: 'https://carturitos.github.io',
-  availability: 'Disponible para nuevos proyectos',
-  responseTime: 'Respondo en menos de 24 horas',
+  availability: 'Propuesta freelance en preparación',
+  responseTime: 'Respuesta según disponibilidad',
 } as const
 
 export type ContactChannel = 'whatsapp' | 'email'

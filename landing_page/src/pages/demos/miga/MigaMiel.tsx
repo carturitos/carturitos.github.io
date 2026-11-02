@@ -35,6 +35,7 @@ export function MigaMiel() {
   const [needId, setNeedId] = useState(needOptions[0].id)
   const [picked, setPicked] = useState<Product | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mobileNav, setMobileNav] = useState(() => window.matchMedia('(max-width: 820px)').matches)
   const [barVisible, setBarVisible] = useState(false)
 
   const heroRef = useRef<HTMLElement | null>(null)
@@ -52,6 +53,17 @@ export function MigaMiel() {
   }, [need, picked])
 
   const waHref = contactHref(message)
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 820px)')
+    const sync = () => {
+      setMobileNav(media.matches)
+      if (!media.matches) setMenuOpen(false)
+    }
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -163,6 +175,7 @@ export function MigaMiel() {
             className={`mm-nav${menuOpen ? ' is-open' : ''}`}
             id="mm-menu"
             aria-label="Navegación principal"
+            inert={mobileNav && !menuOpen}
           >
             <a href="#catalogo" onClick={closeMenu}>Catálogo</a>
             <a href="#personalizados" onClick={closeMenu}>Personalizados</a>
@@ -522,8 +535,8 @@ export function MigaMiel() {
                 <li>Consultas por WhatsApp</li>
               </ul>
               <p className="mm-extra">
-                Editar precios y productos sin tocar código: panel de administración, servicio
-                adicional.
+                Esta demo muestra un catálogo de consulta. No incluye compras, reservas automáticas
+                ni panel de administración. La propuesta freelance está en preparación.
               </p>
             </Reveal>
 

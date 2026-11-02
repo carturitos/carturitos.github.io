@@ -1,6 +1,6 @@
 # Portafolio freelance — Samuel Gutiérrez
 
-Sitio de portafolio para ofrecer servicios de desarrollo web y sistemas a pymes y
+Sitio de portafolio para ofrecer una propuesta de landing pages y catálogos de consulta para pymes y
 emprendedores. Construido con React, Vite y TypeScript, publicado en GitHub Pages con
 GitHub Actions.
 
@@ -33,7 +33,7 @@ GitHub Actions.
 │       ├── components/
 │       └── styles/global.css      # sistema de diseño
 ├── docs/                          # guías de trabajo freelance
-├── PLAN.md                        # plan de acción de 4 semanas
+├── PLAN.md                        # hoja de ruta por etapas
 └── tools/serve.py                 # preview local de dist con fallback SPA
 ```
 
@@ -56,9 +56,6 @@ cd ..
 python tools/serve.py 4173 landing_page/dist
 ```
 
-> Importante: el build usa esbuild, que necesita lanzar un proceso hijo. Dentro del
-> sandbox de DSH eso falla con `EPERM`; en una terminal normal funciona sin problemas.
-> El workflow de GitHub Actions compila en la nube, sin esa restricción.
 
 ## Configurar el contacto
 
@@ -76,16 +73,14 @@ Después haz commit y push: GitHub Actions vuelve a publicar automáticamente.
 Cada push a `main` ejecuta el workflow `Deploy portfolio to GitHub Pages`, que compila
 `landing_page/` y publica `dist/` en https://carturitos.github.io.
 
-## Plan de trabajo
+## Estado y alcance
 
-El plan de acción vive en [`PLAN.md`](PLAN.md) y se gestiona en el tablero
-[Lanzamiento freelance](https://github.com/users/carturitos/projects/2) de GitHub
-Projects, con 31 issues etiquetados por área, prioridad y semana.
+Propuesta freelance en preparación. Miga & Miel es el referente visual; las demos son conceptos, no trabajos de clientes. Los valores, plazos, ajustes y soporte están en definición. La oferta inicial se acota a landing pages y catálogos de consulta; no incluye tienda, reservas automáticas ni panel administrativo.
 
-Guías de apoyo:
+Desarrollo con apoyo de IA para implementación y documentación, revisando el código y las decisiones técnicas. La presencia de una tecnología no equivale a dominio profesional de ella.
 
-- [Perfil de Workana](docs/workana.md)
-- [Propuestas y seguimiento](docs/propuestas.md)
-- [Precios y condiciones](docs/precios.md)
-- [Primer cliente: entrega y reseña](docs/primer-cliente.md)
-- [Cómo editar y publicar el sitio](docs/github-pages.md)
+## Hoja de ruta
+
+[PLAN.md](PLAN.md) resume el orden: ajustes de Miga & Miel → landing principal de Samuel → barbería → clínica → preparación comercial. Las ampliaciones full stack se planifican y validan por separado.
+
+[Plan y criterios](docs/plan-redisenio-landings.md) · [GitHub Project](https://github.com/users/carturitos/projects/2) · [Publicación](docs/github-pages.md) · [Valores y condiciones en definición](docs/precios.md)
