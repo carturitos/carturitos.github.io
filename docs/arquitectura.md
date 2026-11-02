@@ -51,3 +51,9 @@ Para navegación directa a rutas internas, `public/404.html` redirige a la entra
 Los módulos de agenda son trabajo pendiente. Antes de implementarlos deben definirse entidades, contratos HTTP, estados de reserva, validación del servidor, autorización, persistencia y despliegue independiente del frontend estático. La exclusión de reservas concurrentes del mismo cupo debe comprobarse en la capa de persistencia; desactivar un botón en el navegador no resuelve la concurrencia.
 
 No se ha elegido una arquitectura backend ni se asume que las dos agendas deban compartir módulos. Los criterios están en [plan de implementación](plan-redisenio-landings.md).
+
+## Requisitos de la próxima portada
+
+Planificados, no implementados: rutas ES/EN y contextos personal/muestras externas (#45 y #46). Compartir secciones y demos; separar contenido localizado y configuración de acciones. La URL debe identificar idioma y contexto de forma reproducible. No usar referrer para ocultar enlaces.
+
+El destino de plataforma será opcional y tendrá un estado explícito no disponible hasta configurarse. La ausencia de URL no debe crear una acción alternativa de contacto. El contexto personal mantiene enlaces profesionales y composición de mensajes externos. Consultar los [criterios de implementación](plan-redisenio-landings.md).
