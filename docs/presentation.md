@@ -33,11 +33,11 @@ El submit prepara una URL de WhatsApp en memoria. Aparece un enlace para que el 
 
 El contenido es visible antes de observarlo. IntersectionObserver añade una animación de entrada sin ocultar información si falla. CSS respeta `prefers-reduced-motion`. La navegación móvil es un disclosure en el flujo de la página; Escape cierra el menú y devuelve foco. Al pasar a escritorio se libera el estado móvil.
 
-## Validación de la rama
+## Validación de la implementación
 
 - Tests nativos de Node para la matriz de rutas, compatibilidad, preferencia de idioma y destinos ausentes/inválidos/configurados.
 - TypeScript y build Vite.
 - Navegador: 16 combinaciones de página/demo, idioma y contexto, con comprobación de enlaces y desbordamiento.
 - Comprobación móvil, cambio de idioma/historial y preparación local de mensaje sin enviarlo.
 
-Pendientes para integración: revisión visual del propietario, dispositivo físico y mediciones del build publicado. Cuando exista un destino real, comprobarlo y revalidar los requisitos de la plataforma antes de habilitarlo. No se considera una aprobación externa.
+Pendientes de validación adicional: dispositivo físico y mediciones del build publicado. Cuando exista un destino real, comprobarlo y revalidar los requisitos de la plataforma antes de habilitarlo. No se considera una aprobación externa.

@@ -2,7 +2,7 @@
 
 SPA en **React y TypeScript** con una página principal bilingüe y tres demos de interfaces web. Este repositorio contiene implementación, arquitectura, recursos y flujo de despliegue.
 
-La nueva portada se encuentra en revisión en una rama de desarrollo. El sitio público continúa con la versión de `main` hasta integrar el cambio.
+El sitio se publica desde `main` mediante GitHub Pages. La portada dispone de versiones ES/EN y contextos explícitos de navegación.
 
 ## Rutas
 

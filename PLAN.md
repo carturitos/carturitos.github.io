@@ -9,7 +9,7 @@
 
 ## Próximas etapas
 
-La portada bilingüe y los contextos de navegación tienen implementación en revisión en una rama de desarrollo. No se consideran publicados ni cerrados hasta integrar la revisión visual y la validación correspondiente.
+La portada bilingüe y los contextos de navegación se implementaron en PR #48. La validación en dispositivo físico, las mediciones publicadas y la activación de un destino externo real mantienen su seguimiento por separado.
 
 | Orden | Proyecto | Entregable técnico | Tarea |
 | --- | --- | --- | --- |
