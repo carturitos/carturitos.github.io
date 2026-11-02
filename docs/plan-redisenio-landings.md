@@ -1,38 +1,45 @@
-# Criterios de evolución · Carturitos
+# Criterios de implementación
 
-Este documento define el alcance y la aceptación de las próximas propuestas. El estado y las entregas completadas se resumen en [PLAN.md](../PLAN.md). Cada rediseño y ampliación funcional requiere revisar su propuesta visual y alcance antes de implementar.
+El [plan técnico](../PLAN.md) indica el estado y el orden de trabajo. Este documento define alcance y criterios de aceptación por proyecto.
 
-## 1 Miga & Miel como referente
+## Miga & Miel
 
-Composición, identidad, catálogo y ruta se conservan como referencia. Los ajustes de foco del menú cerrado, cambio a escritorio con menú abierto, desplazamiento del diálogo y lenguaje de contacto se completaron en [PR #42](https://github.com/carturitos/carturitos.github.io/pull/42). La demo no procesa compras ni reservas. Los precios de pastelería son ilustrativos; no son tarifas de desarrollo.
+Mantener identidad, catálogo y ruta `/demos/pasteleria`. El menú cerrado fuera del foco, cierre al pasar a escritorio, diálogo desplazable y estados veraces del formulario se corrigieron en [PR #42](https://github.com/carturitos/carturitos.github.io/pull/42).
 
-## 2 Próximo trabajo la landing de Samuel
+Comprobar teclado, devolución de foco, bloqueo y liberación del scroll, selección de producto y composición de enlaces externos. No existe persistencia de pedidos o reservas.
 
-Objetivo: explicar quién desarrolla, qué puede entregar hoy y mostrar Miga & Miel como pieza principal.
+## Página principal · #39
 
-Entregables previos a código: arquitectura de contenido, textos, wireframes móvil/escritorio y propuesta visual. Mostrar experiencia en soporte/producto y desarrollo junior sin atribuir auditoría de seguridad ni dominio de cada línea generada. Oferta actual: landing y catálogo de consulta. Señalar preparación comercial y condiciones por definir.
+Definir arquitectura de información, wireframes móvil/escritorio y composición de componentes antes de modificar la interfaz. Integrar Miga & Miel como proyecto destacado y enlaces a las otras rutas.
 
-Aceptación: CTA veraz, demos identificadas como conceptos, Miga & Miel destacada, contacto real, accesibilidad, móvil y build. No incorporar un backend solo para la portada. No reutilizar literalmente la marca de la pastelería.
+Aceptación: navegación semántica, jerarquía de encabezados, foco visible, estados de formulario explícitos, ausencia de desbordamiento horizontal y metadatos coherentes. Mantener la implementación estática; no añadir backend para esta etapa.
 
-## 3 Corte Real barbería
+## Corte Real · #40
 
-Primero: landing propia con servicios, profesionales, horarios ilustrativos y solicitud por WhatsApp claramente identificada. Proponer diseño y flujo antes de desarrollar.
+Primero revisar la interfaz responsive, los componentes de profesionales y servicios y el flujo de selección de horario. Distinguir visualmente una solicitud de una reserva persistida.
 
-Exploración full stack posterior: agenda para una sucursal, servicios con duración, profesionales y disponibilidad; crear/cancelar una reserva; bloquear horarios y evitar reservas simultáneas del mismo cupo. Panel de administración con acceso autorizado y validaciones del servidor. No anunciarla como disponible antes de probarla.
+Después definir un MVP de agenda para una sucursal:
 
-Fuera del primer MVP: pagos, múltiples sucursales, recordatorios automáticos y cuentas de clientes. Definir zona horaria, cancelaciones, acceso y despliegue del backend; GitHub Pages solo aloja el frontend. Criterio clave: dos solicitudes concurrentes no pueden confirmar el mismo cupo.
+- Entidades: profesional, servicio con duración, disponibilidad, bloqueo y reserva.
+- Contratos HTTP para consultar disponibilidad y crear/cancelar reservas.
+- Validaciones del servidor, autorización administrativa y persistencia.
+- Política de zona horaria y transiciones de estado.
+- Prueba de concurrencia: dos solicitudes para el mismo cupo no deben confirmar dos reservas.
 
-## 4 Dental Aurora clínica
+Fuera del primer MVP: pagos, múltiples sucursales, recordatorios automáticos y cuentas de usuarios finales. Definir el despliegue del backend por separado; GitHub Pages aloja los archivos estáticos.
 
-Primero: landing informativa y solicitud de hora, sin diagnóstico ni confirmación automática. Demostración con datos sintéticos y consentimiento claro para el canal de contacto.
+## Dental Aurora · #41
 
-Exploración posterior: agenda administrativa por profesional, solicitud/confirmación/cancelación y notificación de estado. No incluir ficha clínica, síntomas, diagnósticos, documentos de pacientes ni pagos en el MVP. Definir permisos, retención de datos, despliegue y pruebas antes de implementar. Considerar compartir lógica de agenda con barbería solo después de validar su primer caso real.
+Primero revisar la interfaz informativa y el formulario de solicitud de hora. La confirmación debe depender de una operación real, con estados explícitos y tratamiento de errores.
 
-## 5 Calidad y gestión
+Para una agenda administrativa posterior, definir profesionales, solicitudes, confirmaciones, cancelaciones, permisos y retención de datos. Usar datos sintéticos durante desarrollo y demostración. Quedan fuera las fichas clínicas, diagnósticos, síntomas, documentos de pacientes y pagos.
 
-- Build y typecheck por cambio; pruebas de teclado, diálogo, enlaces y anchos relevantes para las interacciones tocadas.
-- Teléfono real y mediciones del sitio publicado permanecen pendientes hasta tener evidencia.
-- No garantizar puntuaciones Lighthouse ni ventas futuras con resultados históricos.
-- Las auditorías anteriores se conservan como historial, no como lista vigente de fallos.
-- Issues duplicadas o fuera de alcance se cierran como no planificadas, no como trabajo realizado.
-- GitHub Projects distingue ahora, siguiente y después; sin cuotas comerciales ni fechas de entrega inventadas.
+Evaluar reutilización de módulos solo después de validar el primer caso de agenda de Corte Real.
+
+## Calidad
+
+- TypeScript y build correctos para cambios de código.
+- Pruebas de teclado, formularios, diálogos y breakpoints afectados.
+- Comprobación de acceso directo a rutas y de recursos en el despliegue.
+- Registrar mediciones de rendimiento y accesibilidad con versión y entorno; no reutilizar resultados históricos como evidencia actual.
+- Mantener pendientes las pruebas físicas y mediciones hasta tener evidencia.

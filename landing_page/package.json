@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portafolio freelance de desarrollo web y sistemas — Samuel Gutiérrez",
+  "description": "Aplicación React y TypeScript con demos de interfaces web",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

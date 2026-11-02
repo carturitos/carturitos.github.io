@@ -5,8 +5,8 @@
 | Quiero cambiar… | Archivo |
 |-----------------|---------|
 | Nombre, correo, WhatsApp, LinkedIn | `landing_page/src/config/site.ts` |
-| Servicios, precios y plazos | `landing_page/src/data/services.ts` |
-| Demos del portafolio | `landing_page/src/data/demos.ts` |
+| Datos de las tarjetas de la página principal | `landing_page/src/data/services.ts` |
+| Registro de demos | `landing_page/src/data/demos.ts` |
 | Proceso y preguntas frecuentes | `landing_page/src/data/content.ts` |
 | Textos de las secciones | `landing_page/src/sections/*.tsx` |
 | Colores y estilos | `landing_page/src/styles/global.css` |
@@ -27,7 +27,7 @@ botones abren WhatsApp con el mensaje ya escrito.
 
 ```bash
 cd landing_page
-npm install      # solo la primera vez
+npm ci
 npm run dev
 ```
 
@@ -39,7 +39,7 @@ Abre `http://localhost:5173`.
 cd landing_page
 npm run build
 cd ..
-python tools/serve.py 4173 landing_page/dist
+python3 tools/serve.py 4173 landing_page/dist
 ```
 
 Abre `http://127.0.0.1:4173`.
