@@ -11,9 +11,14 @@
 
 | Orden | Proyecto | Entregable técnico | Tarea |
 | --- | --- | --- | --- |
-| 1 | Página principal | Arquitectura de información, wireframes móvil/escritorio, composición de componentes y estados de navegación. Revisar el diseño antes de implementar. | [#39](https://github.com/carturitos/carturitos.github.io/issues/39) |
+| 1 | Página principal | Tema claro, varias secciones, tres demos con igual peso, componentes y movimiento accesible. Revisar proporciones antes de implementar. | [#39](https://github.com/carturitos/carturitos.github.io/issues/39) |
 | 2 | Corte Real | Revisar la interfaz y definir el modelo de disponibilidad y reservas: entidades, API, persistencia, permisos y concurrencia. | [#40](https://github.com/carturitos/carturitos.github.io/issues/40) |
 | 3 | Dental Aurora | Revisar el formulario de solicitud de horas y definir estados y permisos de una agenda administrativa con datos sintéticos. | [#41](https://github.com/carturitos/carturitos.github.io/issues/41) |
+
+Subtareas de la página principal:
+
+- [Internacionalización ES/EN (#45)](https://github.com/carturitos/carturitos.github.io/issues/45): rutas, selector, traducciones y metadatos.
+- [Contextos de navegación (#46)](https://github.com/carturitos/carturitos.github.io/issues/46): enlaces y estados distintos para la página personal y el recorrido de muestras externas, incluyendo las demos. El destino de plataforma permanece no disponible hasta tener una URL real configurada.
 
 La aplicación actual es frontend. La tecnología y el despliegue del backend se decidirán al definir la primera agenda. No extraer módulos compartidos antes de validar una necesidad concreta.
 
