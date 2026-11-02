@@ -17,14 +17,13 @@ const tech = [
   'PostgreSQL',
   'Docker',
   'GitHub Actions',
-  'Ciberseguridad',
 ]
 
 export function Home() {
   usePageMeta({
     title: 'Samuel Gutiérrez — Sitios web para pequeños negocios',
     description:
-      'Diseño y programo landing pages y sitios web para pymes y emprendedores en Chile. Proyectos demostrativos, precios referenciales y contacto directo por WhatsApp.',
+      'Diseño y programo landing pages y sitios web para pymes y emprendedores en Chile. Propuesta freelance en preparación, proyectos demostrativos y contacto directo por WhatsApp.',
     path: '/',
   })
 

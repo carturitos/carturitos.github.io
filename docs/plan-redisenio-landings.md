@@ -1,47 +1,38 @@
-# Plan maestro — Rediseño comercial del portafolio Carturitos
-**Estado:** Directrices aprobadas para planificación; no autoriza cambios de código ni despliegues del rediseño antes de la aprobación visual.
-**Responsabilidades:** El propietario define alcance y aprueba diseños. ChatGPT ayuda con estrategia, dirección creativa y criterios de aceptación. DeepSeek Agent analiza, planifica, implementa, prueba y gestiona GitHub Issues/Projects/Actions, respetando aprobaciones. La pareja del propietario apoya ocasionalmente en comunicación comercial en inglés; no es dependencia de desarrollo.
+# Plan vigente del portafolio Carturitos
 
-## Objetivo
-Transformar carturitos.github.io de una colección de demos que parecen plantillas en un portafolio comercial profesional que demuestre **«soluciones bonitas»**: diseño distintivo, usabilidad real, rendimiento, accesibilidad y llamadas a la acción honestas. El cliente debe poder identificar el problema que resuelve cada experiencia, explorar una demo real y comprender los servicios.
+Actualizado el 2 de noviembre de 2026. Los ajustes acotados de calidad y honestidad comercial están autorizados. El rediseño principal y las ampliaciones funcionales se planifican aquí; requieren propuesta visual y alcance revisados antes de implementación.
 
-## Alcance y orden
-- **Fase 1 (ahora):** tres landing pages demostrativas: Miga & Miel (primera), Corte Real (barbería), Dental Aurora (clínica dental). Cada una tendrá personalidad de marca, arquitectura visual, contenido y experiencia diferenciados, no solo paletas distintas.
-- **Fase 2 (después):** sitios con funcionalidades, cuando existan casos demostrables.
-- **Fase 3 (después):** soluciones personalizadas; incorporación de Login Project cuando esté suficientemente completo y presentable.
-- **Comercial:** primero Fiverr, después Workana; el portafolio será material de venta. No distraer esta etapa con aplicaciones complejas ni nuevas demos.
+## 1 Miga & Miel como referente
 
-## Estructura comercial del portafolio
-La página principal deberá comunicar: a quién se ayuda, qué problema se resuelve, servicios realmente disponibles, demostraciones navegables, proceso de trabajo, presentación profesional y contacto. Separar capacidades actuales de proyectos futuros. Declarar que las tres marcas son conceptos de demostración; no presentarlas como clientes reales ni inventar testimonios, resultados, equipos, precios definitivos o reservas operativas. Mantener información privada y de planificación fuera de la web pública.
+Conservar composición, identidad, catálogo y ruta. Corregir foco del menú cerrado, cambio a escritorio con menú abierto, desplazamiento del diálogo y lenguaje de contacto. La demo no procesa compras ni reservas. Los precios de pastelería son ilustrativos; no son tarifas de desarrollo.
 
-## Reglas transversales de las demos
-1. **Identidad auténtica:** logo/tratamiento de marca, fotografía coherente, tipografía, color, composición y ritmo visual definidos por rubro. Evitar la misma estructura de hero/tarjetas/FAQ repetida.
-2. **Solución comercial:** CTA claro y operativo; especificar cuando un botón prepara consulta de WhatsApp o correo en vez de confirmar una reserva/pedido. No simular backend ni inventar integraciones.
-3. **Calidad:** responsive móvil/tablet/escritorio; navegación con teclado, foco visible, HTML semántico, contraste adecuado, textos alternativos, reduced motion y mensajes de estado accesibles.
-4. **Rendimiento:** imágenes con licencia apropiada, tamaño optimizado y carga diferida cuando corresponda; animaciones eficientes; medir antes/después; SEO básico y metadatos por demo.
-5. **Contenido:** textos específicos del rubro, productos/servicios coherentes y datos claramente marcados como demostrativos cuando sean inventados. No usar reseñas ficticias como auténticas.
-6. **Operación:** mantener rutas y despliegue GitHub Pages sin roturas; trabajar en ramas/PR por etapas, con revisión, pruebas y comprobación de GitHub Actions.
-7. **Mantenimiento:** reutilizar utilidades técnicas cuando convenga, pero no uniformar diseño ni forzar una reestructuración de carpetas sin antes estudiar el proyecto real.
+## 2 Próximo trabajo la landing de Samuel
 
-## Flujo de ejecución para DeepSeek
-1. Leer este documento y `docs/brief-miga-miel.md`.
-2. Auditar el repositorio, stack, rutas, componentes existentes, assets, GitHub Pages y GitHub Issues; listar qué puede conservarse y qué conviene transformar.
-3. Proponer un plan técnico por tareas, con dependencias, entregables y criterios de aceptación; reutilizar issues existentes (#14 imágenes, #15 móvil, #28 Fiverr) y evitar duplicados. Reflejarlo en GitHub Projects si la integración lo permite.
-4. **Antes de cambiar código:** presentar diseño de Miga & Miel al propietario (wireframe desktop/móvil, tratamiento de marca, referencias fotográficas, tipografías, paleta, lista de secciones y CTA). Solicitar aprobación explícita.
-5. Tras aprobarse: implementar Miga & Miel en rama, pruebas y PR; validar experiencia real y publicar solo con aprobación.
-6. Repetir el ciclo creativo y técnico para Corte Real y Dental Aurora, cada una con identidad propia.
-7. Actualizar la presentación de Carturitos con capturas reales y acceso visible a cada demo; luego preparar el material de Fiverr.
+Objetivo: explicar quién desarrolla, qué puede entregar hoy y mostrar Miga & Miel como pieza principal.
 
-## Criterios de aceptación de la fase 1
-- Tres demos visualmente distintas, funcionales, accesibles, rápidas y adaptadas a móvil.
-- El usuario puede comprender oferta y completar la acción de contacto que efectivamente esté implementada.
-- No hay botones decorativos que aparenten funcionar ni testimonios engañosos.
-- La página principal presenta las demos como proyectos conceptuales y los servicios como ofertas claras.
-- Sin errores de build ni regresiones importantes en GitHub Pages; revisión manual en móvil real.
-- Documentar qué es demostrativo y qué requiere configuración del futuro cliente.
+Entregables previos a código: arquitectura de contenido, textos, wireframes móvil/escritorio y propuesta visual. Mostrar experiencia en soporte/producto y desarrollo junior sin atribuir auditoría de seguridad ni dominio de cada línea generada. Oferta actual: landing y catálogo de consulta. Señalar preparación comercial y condiciones por definir.
 
-## Coordinación y decisiones
-- DeepSeek no debe reinterpretar silenciosamente las decisiones visuales aprobadas.
-- Si una decisión técnica pone en riesgo rendimiento, accesibilidad, mantenimiento o compatibilidad, explicar alternativa con trade-offs antes de ejecutarla.
-- Registrar decisiones y cambios importantes en el PR o en un documento de decisiones.
-- El brief específico rige la identidad de Miga & Miel; este documento rige el proyecto global.
+Aceptación: CTA veraz, demos identificadas como conceptos, Miga & Miel destacada, contacto real, accesibilidad, móvil y build. No incorporar un backend solo para la portada. No reutilizar literalmente la marca de la pastelería.
+
+## 3 Corte Real barbería
+
+Primero: landing propia con servicios, profesionales, horarios ilustrativos y solicitud por WhatsApp claramente identificada. Proponer diseño y flujo antes de desarrollar.
+
+Exploración full stack posterior: agenda para una sucursal, servicios con duración, profesionales y disponibilidad; crear/cancelar una reserva; bloquear horarios y evitar reservas simultáneas del mismo cupo. Panel de administración con acceso autorizado y validaciones del servidor. No anunciarla como disponible antes de probarla.
+
+Fuera del primer MVP: pagos, múltiples sucursales, recordatorios automáticos y cuentas de clientes. Definir zona horaria, cancelaciones, acceso y despliegue del backend; GitHub Pages solo aloja el frontend. Criterio clave: dos solicitudes concurrentes no pueden confirmar el mismo cupo.
+
+## 4 Dental Aurora clínica
+
+Primero: landing informativa y solicitud de hora, sin diagnóstico ni confirmación automática. Demostración con datos sintéticos y consentimiento claro para el canal de contacto.
+
+Exploración posterior: agenda administrativa por profesional, solicitud/confirmación/cancelación y notificación de estado. No incluir ficha clínica, síntomas, diagnósticos, documentos de pacientes ni pagos en el MVP. Definir permisos, retención de datos, despliegue y pruebas antes de implementar. Considerar compartir lógica de agenda con barbería solo después de validar su primer caso real.
+
+## 5 Calidad y gestión
+
+- Build y typecheck por cambio; pruebas de teclado, diálogo, enlaces y anchos relevantes para las interacciones tocadas.
+- Teléfono real y mediciones del sitio publicado permanecen pendientes hasta tener evidencia.
+- No garantizar puntuaciones Lighthouse ni ventas futuras con resultados históricos.
+- Las auditorías anteriores se conservan como historial, no como lista vigente de fallos.
+- Issues duplicadas o fuera de alcance se cierran como no planificadas, no como trabajo realizado.
+- GitHub Projects distingue ahora, siguiente y después; sin cuotas comerciales ni fechas de entrega inventadas.

@@ -10,8 +10,8 @@ export function Services() {
           <span className="kicker">01 — Servicios</span>
           <h2>Soluciones concretas, no horas de código.</h2>
           <p>
-            Cada servicio tiene precio de partida y plazo definido. Si tu necesidad no aparece en
-            la lista, escríbeme igual: la revisamos y te digo con honestidad si puedo ayudarte.
+            Propuesta freelance en preparación. Los servicios, valores, plazos y condiciones están
+            en definición y se confirmarán por escrito para cada proyecto.
           </p>
         </Reveal>
 
@@ -26,7 +26,7 @@ export function Services() {
                       <Icon size={20} />
                     </span>
                     <div className="service-badges">
-                      {service.featured && <span className="service-badge">Más pedido</span>}
+                      {service.featured && <span className="service-badge">Enfoque inicial</span>}
                       <span className="service-index">{service.index}</span>
                     </div>
                   </div>
@@ -59,8 +59,8 @@ export function Services() {
         </div>
 
         <p className="section-footnote">
-          Precios referenciales en pesos chilenos, sujetos a evaluación del alcance. No incluyen
-          dominio ni hosting. El valor final se confirma por escrito antes de comenzar.
+          Valores y plazos por definir. Dominio, hosting, materiales, ajustes y soporte se acuerdan
+          en cada propuesta antes de comenzar.
         </p>
       </div>
     </section>

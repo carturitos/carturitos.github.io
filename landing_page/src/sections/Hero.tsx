@@ -12,34 +12,34 @@ export function Hero() {
           </span>
 
           <h1>
-            Webs y sistemas que <span className="mark">hacen crecer</span> tu negocio.
+            Páginas web para <span className="mark">presentar</span> tu negocio.
           </h1>
 
           <p className="lede">
-            Diseño y programo landing pages, sistemas de login y paneles de administración para
-            pymes y emprendedores. Full stack, precios claros y entregas en días, no en meses.
+            Estoy preparando una propuesta freelance de landing pages y catálogos de consulta para
+            pequeños negocios. Explora las demos y conversemos sobre un alcance que pueda entregar.
           </p>
 
           <div className="hero-actions">
             <a className="btn btn-primary" href="#contacto">
-              Cotizar mi proyecto
+              Consultar un proyecto
               <ArrowRight size={17} />
             </a>
             <a className="btn btn-ghost" href="#demos">
-              Ver demos reales
+              Explorar demostraciones
               <ArrowUpRight size={16} />
             </a>
           </div>
 
           <ul className="hero-checks">
             <li>
-              <Check size={15} /> Presupuesto sin costo
+              <Check size={15} /> Alcance acotado
             </li>
             <li>
-              <Check size={15} /> Desde $149.000 CLP
+              <Check size={15} /> Valor por definir
             </li>
             <li>
-              <Check size={15} /> 30 días de soporte
+              <Check size={15} /> Condiciones a acordar
             </li>
           </ul>
         </div>
@@ -85,8 +85,8 @@ export function Hero() {
               <Zap size={15} />
             </span>
             <span>
-              Entrega en 5–7 días
-              <small>sin esperas eternas</small>
+              Plazos a acordar
+              <small>según alcance y contenidos</small>
             </span>
           </div>
 
@@ -95,8 +95,8 @@ export function Hero() {
               <Shield size={15} />
             </span>
             <span>
-              Código 100% tuyo
-              <small>sin quedarte amarrado</small>
+              Entrega documentada
+              <small>accesos y uso acordados</small>
             </span>
           </div>
         </div>

@@ -145,8 +145,8 @@ export type NeedOption = { id: string; label: string; need: string }
 
 export const needOptions: NeedOption[] = [
   { id: 'landing', label: 'Landing page', need: 'una landing page' },
-  { id: 'catalogo', label: 'Catálogo', need: 'un catálogo o tienda simple' },
-  { id: 'reservas', label: 'Reservas', need: 'reservas o agenda' },
+  { id: 'catalogo', label: 'Catálogo', need: 'un catálogo de consulta' },
+  { id: 'reservas', label: 'Contacto', need: 'una página con consultas por WhatsApp' },
   { id: 'nose', label: 'Aún no sé', need: 'algo que todavía no tengo claro' },
 ]
 

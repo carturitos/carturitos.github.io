@@ -10,29 +10,29 @@ export const steps: Step[] = [
     number: '01',
     title: 'Conversamos',
     description:
-      'Una llamada o chat de 15 minutos, sin costo. Entiendo tu negocio, qué debe lograr la web y qué tienes hoy.',
-    meta: 'Día 0',
+      'Conversamos sobre tu negocio, qué debe lograr la web y qué contenidos tienes disponibles.',
+    meta: 'Consulta inicial',
   },
   {
     number: '02',
     title: 'Propuesta clara',
     description:
-      'Recibes alcance, precio fijo, plazo y la lista de lo que necesito de ti. Sin letra chica ni cobros sorpresa.',
-    meta: 'Día 1',
+      'Definimos por escrito el alcance, valor, plazo, condiciones y contenidos necesarios antes de comenzar.',
+    meta: 'Antes de comenzar',
   },
   {
     number: '03',
     title: 'Construyo con avances',
     description:
-      'Ves el sitio creciendo desde el primer día con un enlace de avance. Dos rondas de ajustes incluidas.',
-    meta: 'Día 2 a 7',
+      'Revisamos avances y ajustes según los hitos definidos en la propuesta.',
+    meta: 'Según calendario acordado',
   },
   {
     number: '04',
     title: 'Entrego y acompaño',
     description:
-      'Publicamos en tu dominio, te explico cómo actualizarlo y quedan 30 días de soporte para lo que salga.',
-    meta: 'Día 8',
+      'Acordamos publicación, accesos e instrucciones de mantenimiento. El soporte se define en la propuesta.',
+    meta: 'Cierre acordado',
   },
 ]
 
@@ -42,7 +42,7 @@ export const faqs: FaqItem[] = [
   {
     question: '¿Cuánto demora una landing page?',
     answer:
-      'Entre 5 y 7 días hábiles desde que tengo tus textos, logo e imágenes. Si necesitas que te ayude a escribir el contenido, agregamos 2 días más.',
+      'El plazo está en definición y depende del alcance, los contenidos disponibles y mi disponibilidad. Se confirma por escrito antes de comenzar.',
   },
   {
     question: '¿Qué necesitas de mi parte?',
@@ -52,31 +52,31 @@ export const faqs: FaqItem[] = [
   {
     question: '¿Cómo se paga?',
     answer:
-      '50 % para reservar el cupo y comenzar, 50 % al aprobar la entrega. Transferencia bancaria o pago por plataforma, con boleta de honorarios.',
+      'La modalidad de pago y sus condiciones se definirán por escrito antes de comenzar. La propuesta freelance está en preparación.',
   },
   {
     question: '¿El hosting y el dominio están incluidos?',
     answer:
-      'No están incluidos, pero te ayudo a configurarlos. Para landing pages el hosting puede ser gratuito (GitHub Pages o Netlify); un dominio .cl cuesta alrededor de $10.000 al año.',
+      'Dominio y hosting se acuerdan por separado. La alternativa de publicación depende del alcance y de las condiciones del proveedor elegido.',
   },
   {
     question: '¿Puedo pedir cambios después de ver el diseño?',
     answer:
-      'Sí. Cada proyecto incluye dos rondas de ajustes sobre la propuesta aprobada. Los cambios de alcance se cotizan aparte y siempre se acuerdan antes.',
+      'Los ajustes incluidos se definen en cada propuesta. Un cambio de alcance requiere acuerdo antes de implementarlo.',
   },
   {
     question: '¿La web queda siendo mía?',
     answer:
-      'Sí. El código y el dominio quedan a tu nombre, y te entrego los accesos. No quedas amarrado a mí para siempre.',
+      'La entrega de código, accesos, licencias de terceros y dominio queda definida por escrito antes de comenzar.',
   },
   {
     question: '¿Trabajas con boleta o factura?',
     answer:
-      'Sí, emito boleta de honorarios. Si necesitas factura, se puede coordinar.',
+      'La modalidad de cobro y el comprobante aplicable se confirmarán antes de formalizar un trabajo.',
   },
   {
     question: '¿Qué pasa si algo falla después de la entrega?',
     answer:
-      'Tienes 30 días de soporte incluido para corregir errores del trabajo entregado. Después de eso puedo seguir con una mantención mensual opcional.',
+      'El alcance, duración y canal de soporte se acuerdan en la propuesta. No hay un período de soporte fijo anunciado en esta etapa.',
   },
 ]
