@@ -11,8 +11,8 @@ export function Process() {
           <span className="kicker">03 — Cómo trabajo</span>
           <h2>Un proceso simple, sin sorpresas.</h2>
           <p>
-            Tú sabes qué recibes, cuándo lo recibes y cuánto cuesta desde el primer día. Yo me
-            encargo de lo técnico.
+            Este es el proceso propuesto: definir el alcance y las condiciones antes de comenzar,
+            revisar avances y acordar la entrega.
           </p>
         </Reveal>
 
@@ -49,7 +49,7 @@ export function Process() {
 
         <p className="section-footnote">
           <Clock size={13} style={{ verticalAlign: '-2px', marginRight: 6 }} />
-          Trabajo con cupos limitados para cuidar los plazos: máximo 2 proyectos a la vez.
+          Disponibilidad y calendario a confirmar al definir cada proyecto.
         </p>
       </div>
     </section>

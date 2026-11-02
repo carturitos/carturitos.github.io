@@ -10,14 +10,14 @@ export const steps: Step[] = [
     number: '01',
     title: 'Conversamos',
     description:
-      'Una llamada o chat de 15 minutos, sin costo. Entiendo tu negocio, qué debe lograr la web y qué tienes hoy.',
+      'Conversamos sobre tu negocio, qué debe lograr la web y qué contenidos tienes disponibles.',
     meta: 'Consulta inicial',
   },
   {
     number: '02',
     title: 'Propuesta clara',
     description:
-      'Recibes alcance, precio fijo, plazo y la lista de lo que necesito de ti. Sin letra chica ni cobros sorpresa.',
+      'Definimos por escrito el alcance, valor, plazo, condiciones y contenidos necesarios antes de comenzar.',
     meta: 'Antes de comenzar',
   },
   {

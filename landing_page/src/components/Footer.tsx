@@ -51,7 +51,7 @@ export function Footer() {
         <p>
           © {year} {site.name}. Hecho con React, Vite y TypeScript, publicado en GitHub Pages.
         </p>
-        <p className="footer-note">Trabajo remoto desde Chile · Boleta de honorarios</p>
+        <p className="footer-note">Trabajo remoto desde Chile · Propuesta freelance en preparación</p>
       </div>
     </footer>
   )
