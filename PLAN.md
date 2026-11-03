@@ -38,3 +38,7 @@ La aplicación actual es frontend. La tecnología y el despliegue del backend se
 Cada tarea debe describir el comportamiento esperado, los límites y cómo se comprobará. Las correcciones de código se verifican con TypeScript, build y pruebas de las interacciones afectadas. El cierre requiere evidencia; las tareas sustituidas se cierran como no planificadas.
 
 Consulta los [criterios por proyecto](docs/plan-redisenio-landings.md).
+
+## Corte Real: implementación en revisión
+
+El frontend de identidad, fotografías y selección de ejemplo se prepara en una rama de revisión (#40). Mantiene el contexto de navegación y separa la selección local del contacto al desarrollador. La agenda con servidor sigue fuera del alcance de esta entrega. Detalle: [Corte Real](docs/corte-real.md).

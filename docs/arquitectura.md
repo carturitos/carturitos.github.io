@@ -39,3 +39,7 @@ El workflow usa Node.js 22, npm ci, pruebas de contratos y build. Publica `landi
 ## Evolución
 
 Las agendas siguen pendientes. Antes de implementar se deben definir entidades, contratos HTTP, estados, validación del servidor, autorización, persistencia y despliegue independiente. Evitar reservas concurrentes exige comprobaciones en persistencia; desactivar un botón en la interfaz no basta. No se ha elegido backend ni arquitectura compartida para las dos agendas.
+
+## Corte Real
+
+La revisión frontend separa composición, controles y un reducer puro de selección en `pages/demos/corte/`. El recorrido no contacta servicios externos ni guarda reservas. El acceso al desarrollador utiliza un mensaje fijo independiente. Ver [modelo y contratos de interfaz](corte-real.md).

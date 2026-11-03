@@ -39,7 +39,7 @@ export const copy = {
     demoNames: ['Corte Real', 'Dental Aurora', 'Miga & Miel'],
     demoSectors: ['Barbería', 'Clínica dental', 'Pastelería'],
     demoTexts: [
-      'Presentación de servicios y contacto. El sistema de reservas es una etapa futura.',
+      'Servicios, profesionales y selección de horario de ejemplo. No envía solicitudes ni confirma reservas.',
       'Interfaz informativa y selección de hora de ejemplo. No confirma reservas reales.',
       'Catálogo explorable, fichas de producto y preparación de una consulta. Sin compras ni inventario.',
     ],
@@ -195,7 +195,7 @@ export const copy = {
     demoNames: ['Corte Real', 'Dental Aurora', 'Miga & Miel'],
     demoSectors: ['Barbershop', 'Dental clinic', 'Bakery'],
     demoTexts: [
-      'Service presentation and contact interface. A real booking system is a future development stage.',
+      'Services, professionals and a sample time selection. It does not send requests or confirm bookings.',
       'Information interface and sample appointment selection. It does not confirm real bookings.',
       'Browsable catalogue, product details and a prepared enquiry. No purchases or inventory.',
     ],
