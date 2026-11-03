@@ -68,3 +68,19 @@ La imagen social `landing_page/public/og/miga-miel.jpg` (1200 × 630) se recorta
 - Generar AVIF + WebP en 480/800/1200 px con `<picture>` y `srcset`.
 - Añadir un `og:image` propio por demo (1200 × 630) a partir de una de estas fotos.
 - Revisar que ninguna imagen muestre marcas legibles (hoy no se detectaron).
+
+## Corte Real · Propuesta frontend
+
+Descarga y revisión: 3 de noviembre de 2026. Fotografías ilustrativas bajo [Pexels License](https://www.pexels.com/license/). No se atribuyen a los profesionales ficticios ni a trabajos realizados por Corte Real.
+
+| Archivo publicado | Uso | ID | Autor | Fuente |
+| --- | --- | --- | --- | --- |
+| `photos/corte-real/hero.jpg` / `hero-sm.jpg` | Escena de oficio en hero | 3998395 | cottonbro studio | https://www.pexels.com/photo/photo-of-a-barber-giving-a-haircut-3998395/ |
+| `photos/corte-real/detalle.jpg` / `detalle-sm.jpg` | Detalle de herramientas en uso | 3993460 | cottonbro studio | https://www.pexels.com/photo/person-in-brown-long-sleeve-shirt-holding-silver-scissors-3993460/ |
+| `photos/corte-real/herramientas.jpg` | Herramientas sobre toalla | 7697712 | RDNE Stock project | https://www.pexels.com/photo/tools-at-barbershop-7697712/ |
+
+Descargadas desde el CDN de Pexels con parámetros de tamaño y compresión. Dimensiones: hero 1400×2100 y 700×1050; detalle 900×1350 y 480×720; herramientas 1000×667. Las variantes pequeñas se redimensionan proporcionalmente con sips; el recorte de composición se aplica con object-fit en CSS. No se alteran los sujetos.
+
+### Tipografía
+
+`fonts/barlow-condensed-bold.ttf` procede del [repositorio Google Fonts](https://github.com/google/fonts/tree/main/ofl/barlowcondensed), autoría The Barlow Project Authors. Licencia SIL Open Font License 1.1 conservada en `fonts/OFL-barlow-condensed.txt`. El archivo se aloja localmente y se declara solo en los estilos de Corte Real.
