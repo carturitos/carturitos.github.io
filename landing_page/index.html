@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#193e33" />
+
+    <title>Samuel Gutiérrez — Landing pages y catálogos de consulta</title>
+    <meta
+      name="description"
+      content="Proyectos de interfaces web, landing pages y catálogos de consulta con React y TypeScript. Explora el trabajo de Samuel Gutiérrez."
+    />
+    <link rel="canonical" href="https://carturitos.github.io/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Samuel Gutiérrez" />
+    <meta property="og:title" content="Samuel Gutiérrez — Landing pages y catálogos de consulta" />
+    <meta
+      property="og:description"
+      content="Interfaces web con React y TypeScript. Proyectos, trayectoria y demostraciones de Samuel Gutiérrez."
+    />
+    <meta property="og:url" content="https://carturitos.github.io/" />
+    <meta property="og:image" content="https://carturitos.github.io/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <script>
+      // Restaura la ruta real cuando GitHub Pages sirve 404.html (fallback SPA).
+      ;(function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
+
+    <script>
+      // Tipografías por ruta: la demo de pastelería usa Bricolage + Instrument Sans;
+      // el resto del sitio usa Sora, Inter y JetBrains Mono. Precargar solo lo que
+      // esa ruta necesita evita descargar cientos de KB de más.
+      ;(function (path) {
+        var isPasteleria = path.indexOf('/demos/pasteleria') !== -1
+        var fonts = isPasteleria
+          ? ['/fonts/bricolage.woff2', '/fonts/instrument-sans.woff2']
+          : ['/fonts/inter.woff2']
+
+        fonts.forEach(function (href) {
+          var link = document.createElement('link')
+          link.rel = 'preload'
+          link.as = 'font'
+          link.type = 'font/woff2'
+          link.crossOrigin = 'anonymous'
+          link.href = href
+          document.head.appendChild(link)
+        })
+      })(window.location.pathname)
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

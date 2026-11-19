@@ -1,0 +1,22 @@
+# Dependencias y builds
+node_modules/
+landing_page/dist/
+landing_page/node_modules/
+landing_page/.vite/
+*.tsbuildinfo
+
+# Herramientas locales y capturas de trabajo
+.npm-cache/
+.chrome-shot/
+.chrome-shot*/
+.chrome-tmp/
+.edge-tmp/
+.shots/
+.tmp-*/
+landing_page/dist-check/
+
+# Entorno y sistema
+.env
+.env.local
+.DS_Store
+Thumbs.db
