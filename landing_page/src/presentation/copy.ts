@@ -49,7 +49,7 @@ export const copy = {
     backendText:
       'API de autenticación con NestJS y PostgreSQL: registro con contraseñas protegidas con hash (bcrypt), login con JWT y rutas protegidas. Base de datos en Docker y pruebas con Vitest.',
     backendStack: 'NestJS · TypeScript · PostgreSQL · JWT · Docker',
-    moreProjects: 'Más proyectos en GitHub',
+    moreProjects: 'Perfil en GitHub',
     experienceEyebrow: '02 / Experiencia',
     experienceTitle: 'Trayectoria y formación.',
     experienceText:
@@ -151,7 +151,7 @@ export const copy = {
     backendText:
       'Authentication API with NestJS and PostgreSQL: sign-up with hashed passwords (bcrypt), JWT login and protected routes. Database in Docker and tests with Vitest.',
     backendStack: 'NestJS · TypeScript · PostgreSQL · JWT · Docker',
-    moreProjects: 'More projects on GitHub',
+    moreProjects: 'GitHub profile',
     experienceEyebrow: '02 / Experience',
     experienceTitle: 'Background and education.',
     experienceText:
