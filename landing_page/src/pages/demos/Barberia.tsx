@@ -1,5 +1,5 @@
 import { DemoNotice } from '../../components/DemoNotice'
-import { usePresentation } from '../../presentation/usePresentation'
+import { demoSourceUrl } from '../../presentation/usePresentation'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import './barberia.css'
 
@@ -47,7 +47,6 @@ const testimonials = [
 ]
 
 export function Barberia() {
-  const { samples, platformHref, contactTarget, locale } = usePresentation()
   usePageMeta({
     title: 'Corte Real — Demo de barbería | Samuel Gutiérrez',
     description:
@@ -201,32 +200,14 @@ export function Barberia() {
                 disponibilidad ni guarda reservas; los horarios y datos del
                 local son ilustrativos.
               </p>
-              {samples && !platformHref ? (
-                <button
-                  className="cr-btn cr-btn-gold cr-btn-lg"
-                  type="button"
-                  disabled
-                >
-                  {locale === 'en'
-                    ? 'Fiverr link not available yet'
-                    : 'Enlace a Fiverr aún no disponible'}
-                </button>
-              ) : (
-                <a
-                  className="cr-btn cr-btn-gold cr-btn-lg"
-                  href={contactTarget(
-                    'Hola Samuel, vi la demo de Corte Real y quiero una web similar para mi negocio.',
-                  )}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {samples
-                    ? locale === 'en'
-                      ? 'Continue on Fiverr'
-                      : 'Continuar en Fiverr'
-                    : 'Quiero una web así'}
-                </a>
-              )}
+              <a
+                className="cr-btn cr-btn-gold cr-btn-lg"
+                href={demoSourceUrl('barberia')}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ver el código de esta demo
+              </a>
               <p className="cr-note">
                 Este sitio es una demostración: no reserva horas reales.
               </p>

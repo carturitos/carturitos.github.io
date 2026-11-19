@@ -1,58 +1,64 @@
 # carturitos.github.io
 
-SPA en **React y TypeScript** con una página principal bilingüe y tres demos de interfaces web. Este repositorio contiene implementación, arquitectura, recursos y flujo de despliegue.
+Portafolio personal de **Samuel Gutiérrez**, desarrollador full stack. SPA en **React y TypeScript** con página principal bilingüe (ES/EN) y tres demos de interfaces web.
 
-El sitio se publica desde `main` mediante GitHub Pages. La portada dispone de versiones ES/EN y contextos explícitos de navegación.
+Sitio publicado: https://carturitos.github.io
+
+## Stack
+
+React 19 · TypeScript · Vite · React Router · CSS por componente · Node test runner · GitHub Actions · GitHub Pages
 
 ## Rutas
 
 | Ruta | Comportamiento |
 | --- | --- |
-| `/` | Selecciona idioma según elección guardada o preferencia inicial del navegador. |
-| `/es`, `/en` | Página principal en español o inglés, con enlaces profesionales y composición de mensajes externos. |
-| `/muestras/es`, `/muestras/en` | Página principal sin contacto externo y con destino de plataforma configurable. |
-| `/:idioma/demos/:demo` | Demo dentro del contexto personal. |
-| `/muestras/:idioma/demos/:demo` | Demo que conserva el contexto de muestras. |
-| `/demos/:demo` | Compatibilidad con las URLs originales en español. |
+| `/` | Redirige a `/es` o `/en` según la elección guardada o el idioma del navegador. |
+| `/es`, `/en` | Página principal: proyectos, experiencia, perfil y contacto. |
+| `/:idioma/demos/:demo` | Demo (`barberia`, `dental`, `pasteleria`). La interfaz de las demos está en español. |
+| `/demos/:demo` | Compatibilidad con las URLs originales. |
 
-Idiomas admitidos: `es`, `en`. Demos: `barberia`, `dental`, `pasteleria`. Las interfaces de las demos continúan en español; el marco de navegación y sus descripciones informan de ello en inglés.
+## Demos
 
-La aplicación no incluye API propia, base de datos, autenticación ni persistencia de reservas. El formulario prepara un enlace localmente; no envía ni almacena mensajes.
+| Demo | Qué muestra |
+| --- | --- |
+| **Corte Real** (barbería) | Landing de servicios, navegación por secciones, precios de ejemplo y diseño adaptable. |
+| **Dental Aurora** (clínica) | Sitio informativo con selección de tratamiento y fecha de ejemplo. |
+| **Miga & Miel** (pastelería) | Catálogo con fichas en `<dialog>` accesible, galería, menú móvil y formulario de consulta con vista previa. |
+
+Los negocios y sus contenidos son ficticios. El sitio es estático: no tiene API, base de datos ni envío de formularios.
 
 ## Arquitectura
 
-- React Router resuelve rutas en `src/App.tsx`; las demos se importan con `lazy` y `Suspense`.
-- `src/presentation/` contiene la portada, los textos ES/EN, las funciones puras de rutas y el contexto de navegación derivado de la URL.
-- Las demos comparten configuración de navegación y conservan sus componentes y CSS propios.
-- `src/config/site.ts` centraliza enlaces. El destino de plataforma permanece vacío hasta disponer de una URL real válida; no tiene fallback a contacto directo.
-- `usePageMeta` actualiza metadatos, idioma y alternativas al navegar. Es renderizado en cliente, no SSR.
-- GitHub Actions comprueba contratos de rutas y compila antes de publicar archivos estáticos.
+- `src/App.tsx` resuelve las rutas; las demos se cargan con `lazy` y `Suspense`.
+- `src/presentation/` contiene la portada, los textos ES/EN y funciones puras de rutas e idioma (cubiertas por tests).
+- Cada demo mantiene sus componentes y su CSS en `src/pages/demos/`.
+- `usePageMeta` actualiza título, descripción, canonical y alternativas de idioma al navegar.
+- `public/404.html` y un script en `index.html` permiten rutas limpias en GitHub Pages.
 
-Más detalles: [arquitectura](docs/arquitectura.md) y [rutas, idioma y estados](docs/presentation.md).
+Más detalle en [docs/arquitectura.md](docs/arquitectura.md). Procedencia de imágenes y fuentes en [docs/assets-licencias.md](docs/assets-licencias.md).
 
 ## Estructura
 
 ```text
-.github/workflows/             Validación y despliegue
+.github/workflows/      Validación de PR y despliegue
 landing_page/
-  index.html                  Entrada HTML y restauración de rutas
-  public/                     Imágenes, fuentes, sitemap y fallback 404
+  public/               Fuentes, imágenes, capturas, 404.html
   src/
-    App.tsx                   Rutas, carga diferida y desplazamiento
-    presentation/             Portada, ES/EN, rutas y marco de demos
-    components/               Avisos e iconos compartidos
-    config/                   Enlaces y configuración
-    hooks/                    Metadatos de página
-    pages/demos/              Interfaces de demostración
-    styles/                   Fuentes y estilos base
-  tests/                      Contratos de idioma, contexto y destinos
-docs/                         Arquitectura, diseño, recursos y criterios
-tools/serve.py                Servidor estático local con fallback SPA
+    App.tsx             Rutas y carga diferida
+    presentation/       Portada, textos ES/EN y rutas
+    pages/demos/        Interfaces de demostración
+    components/         Componentes compartidos
+    config/             Enlaces del sitio
+    hooks/              Metadatos de página
+    styles/             Fuentes y estilos base
+  tests/                Tests de rutas e idioma
+docs/                   Arquitectura y licencias
+tools/serve.py          Servidor estático local con fallback SPA
 ```
 
 ## Desarrollo
 
-Requisitos: Node.js 22 actualizado (22.18 o posterior), npm y Python 3 para la previsualización estática.
+Requisitos: Node.js 22.18 o posterior y npm.
 
 ```bash
 cd landing_page
@@ -60,7 +66,7 @@ npm ci
 npm run dev
 ```
 
-Comprobaciones desde `landing_page/`:
+Comprobaciones:
 
 ```bash
 npm test
@@ -68,22 +74,12 @@ npm run typecheck
 npm run build
 ```
 
-Los tests utilizan el ejecutor nativo de Node con soporte para TypeScript. `build` ejecuta TypeScript y Vite y genera `dist/`. No hay un comando de lint configurado.
+Para servir el build: `python3 tools/serve.py 4173 landing_page/dist` y abrir `http://127.0.0.1:4173/es`.
 
-Para servir el build desde la raíz:
+## Despliegue
 
-```bash
-python3 tools/serve.py 4173 landing_page/dist
-```
+Cada push a `main` ejecuta el workflow de GitHub Actions: instala dependencias, ejecuta los tests, compila y publica `landing_page/dist` en GitHub Pages. Los pull requests ejecutan tests y build sin desplegar.
 
-Previsualización: `http://127.0.0.1:4173/es`.
-
-## Documentación y estado
-
-- [Arquitectura](docs/arquitectura.md) y [navegación bilingüe](docs/presentation.md)
-- [Despliegue y fallback SPA](docs/github-pages.md)
-- [Diseño de Miga & Miel](docs/diseno-miga-miel.md) y [licencias](docs/assets-licencias.md)
-
-Las pruebas físicas, las mediciones de rendimiento publicado y la activación de un destino externo real requieren validación posterior. Los módulos de agenda siguen siendo trabajo futuro.
+---
 
 Autor: Samuel Gutiérrez. Código y documentación desarrollados con asistencia de IA y revisión técnica.

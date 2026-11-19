@@ -10,13 +10,8 @@ export function DemoShell({ children }: { children: ReactNode }) {
     <>
       <div className="demo-context" id="demo-context" role="note">
         <div>
-          <strong>{t.samplesNotice}</strong>
-          <p>
-            {route.locale === 'en'
-              ? t.demoNotice
-              : 'Las interacciones son demostrativas. No se confirman compras ni reservas.'}
-          </p>
-          {route.samples && !route.platformHref && <p>{t.demoUnavailable}</p>}
+          <strong>{t.demoLabel}</strong>
+          <p>{t.demoNotice}</p>
         </div>
         <div className="demo-context-actions">
           <Link to={`${route.homeHref}#projects`}>{t.returnHome} ↗</Link>

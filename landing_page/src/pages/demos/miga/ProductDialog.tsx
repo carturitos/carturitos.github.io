@@ -71,7 +71,7 @@ export function ProductDialog({ product, price, onClose, onConsult }: ProductDia
             <button type="button" className="mm-btn mm-btn-coral mm-btn-block" onClick={() => onConsult(product)}>
               Preparar consulta
             </button>
-            <p className="mm-note">La consulta se escribe a Carturitos, no a la pastelería.</p>
+            <p className="mm-note">Demostración: la consulta no se envía.</p>
           </div>
         </>
       )}

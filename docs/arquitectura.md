@@ -1,41 +1,31 @@
-# Arquitectura y flujo de datos
+# Arquitectura
 
-SPA estática con React, TypeScript, Vite y React Router. El navegador ejecuta la interfaz; GitHub Pages sirve el bundle. No hay API propia, base de datos ni autenticación.
+SPA estática con React, TypeScript, Vite y React Router. El navegador ejecuta la interfaz y GitHub Pages sirve el bundle. No hay API, base de datos ni autenticación.
 
 ## Módulos
 
 | Módulo | Responsabilidad |
 | --- | --- |
-| `src/App.tsx` | Resolver rutas explícitas, cargar demos con lazy/Suspense y gestionar el desplazamiento. |
-| `src/presentation/` | Portada, contenido localizado, funciones de rutas, configuración de acciones derivada del contexto y marco de navegación de demos. |
+| `src/App.tsx` | Rutas explícitas, carga diferida de demos con `lazy`/`Suspense` y gestión del desplazamiento. |
+| `src/presentation/routing.ts` | Funciones puras: construir rutas, leer idioma y demo desde la URL, idioma preferido. |
+| `src/presentation/copy.ts` | Contenido de la portada en español e inglés. |
+| `src/presentation/PresentationHome.tsx` | Portada: proyectos, experiencia, perfil y contacto. |
+| `src/presentation/DemoShell.tsx` | Aviso de demo, regreso a los proyectos y selector de idioma. |
 | `src/pages/demos/` | Interfaces y estilos de cada demo; Miga & Miel agrupa componentes y datos en `miga/`. |
-| `src/components/` | Avisos y recursos de interfaz compartidos. |
-| `src/config/site.ts` | Configuración de enlaces y construcción de mensajes externos del contexto personal. |
 | `src/hooks/usePageMeta.ts` | Metadatos, idioma y alternativas por ruta en el cliente. |
-| `src/styles/` | Fuentes locales y estilos base. |
+| `src/config/site.ts` | Enlaces de contacto y URL del sitio. |
 
 ## Flujo
 
-1. El fallback de GitHub Pages restaura la URL si el acceso es directo a una ruta interna.
-2. App selecciona portada o demo. Solo la entrada `/` consulta idioma guardado/preferencia de navegador.
-3. La URL determina idioma y contexto; componentes compartidos leen contenido localizado y configuración.
-4. Las interacciones actualizan estado local. El formulario personal prepara un enlace; no transmite a una API.
-5. Las demos conservan su identidad y cargan por ruta. En muestras se elimina el contacto externo y se conserva el regreso al mismo contexto.
-
-Detalles e invariantes: [portada y navegación](presentation.md).
+1. Si el acceso es directo a una ruta interna, `404.html` redirige y `index.html` restaura la URL.
+2. `App` selecciona portada o demo. Solo la entrada `/` consulta el idioma guardado o el del navegador.
+3. La URL determina el idioma; los componentes leen el contenido localizado.
+4. Las interacciones solo actualizan estado local.
 
 ## Miga & Miel
 
-Seleccionar un producto abre un dialog nativo. Preparar la consulta actualiza la selección, cierra el diálogo y desplaza a la sección correspondiente. El menú usa estado local y breakpoint; el contenido se libera al pasar a escritorio. Los efectos limpian listeners y bloqueo de scroll.
+Seleccionar un producto abre un `<dialog>` nativo con foco gestionado. "Consultar" guarda la selección, cierra el diálogo y desplaza al formulario. El formulario arma una vista previa de la consulta en memoria; no se envía ni se almacena. El menú móvil usa estado local y se cierra al pasar a escritorio; los efectos limpian listeners y el bloqueo de scroll.
 
-El destino de la acción depende del contexto. Sin URL de plataforma, la acción en muestras queda deshabilitada. En contexto personal se conserva la consulta externa; el sitio no puede confirmar su envío.
+## Despliegue
 
-## Recursos y despliegue
-
-Cada demo mantiene CSS propio. Fotografías y fuentes locales de Miga & Miel tienen [procedencia documentada](assets-licencias.md). Los objetivos de diseño no sustituyen mediciones con versión y entorno.
-
-El workflow usa Node.js 22, npm ci, pruebas de contratos y build. Publica `landing_page/dist` con GitHub Pages. Un workflow de PR valida tests y compilación sin desplegar. Ver [despliegue](github-pages.md).
-
-## Evolución
-
-Las agendas siguen pendientes. Antes de implementar se deben definir entidades, contratos HTTP, estados, validación del servidor, autorización, persistencia y despliegue independiente. Evitar reservas concurrentes exige comprobaciones en persistencia; desactivar un botón en la interfaz no basta. No se ha elegido backend ni arquitectura compartida para las dos agendas.
+El workflow usa Node.js 22, `npm ci`, tests y build, y publica `landing_page/dist` con GitHub Pages. Un workflow de pull request valida tests y compilación sin desplegar.

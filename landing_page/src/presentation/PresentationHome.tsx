@@ -1,20 +1,13 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { site, contactHref } from '../config/site'
+import { site } from '../config/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { copy } from './copy'
 import { demoSlugs } from './routing'
-import { saveLocale, usePresentation } from './usePresentation'
+import { demoSourceUrl, saveLocale, usePresentation } from './usePresentation'
 import './presentation.css'
 
-const sections = [
-  'projects',
-  'focus',
-  'process',
-  'about',
-  'questions',
-  'contact',
-]
+const sections = ['projects', 'experience', 'about', 'contact']
 const screenshots = [
   '/shots/barberia.png',
   '/shots/dental.png',
@@ -23,13 +16,17 @@ const screenshots = [
 const skills = [
   'Angular',
   'TypeScript',
-  'Node.js',
+  'JavaScript',
   'React',
+  'Node.js',
+  'Express',
   'NestJS',
   'PostgreSQL',
+  'MongoDB',
   'Git',
   'Docker',
 ]
+const backendRepo = 'https://github.com/carturitos/login-project'
 
 export function LanguageSwitch() {
   const route = usePresentation()
@@ -51,28 +48,9 @@ export function LanguageSwitch() {
   )
 }
 
-function PlatformAction() {
-  const { locale, platformHref } = usePresentation()
-  const t = copy[locale]
-  return platformHref ? (
-    <a
-      className="p-button"
-      href={platformHref}
-      target="_blank"
-      rel="noreferrer"
-    >
-      {t.backPlatform} <span aria-hidden="true">↗</span>
-    </a>
-  ) : (
-    <p className="p-unavailable">
-      <span aria-hidden="true">○</span> {t.unavailable}
-    </p>
-  )
-}
-
 export function PresentationHome() {
   const route = usePresentation()
-  const { locale, samples } = route
+  const { locale } = route
   const t = copy[locale]
   const root = useRef<HTMLDivElement>(null)
   const menuButton = useRef<HTMLButtonElement>(null)
@@ -80,7 +58,6 @@ export function PresentationHome() {
   const [mobile, setMobile] = useState(
     () => window.matchMedia('(max-width: 900px)').matches,
   )
-  const [prepared, setPrepared] = useState<string | null>(null)
 
   usePageMeta({
     title: t.title,
@@ -100,9 +77,8 @@ export function PresentationHome() {
 
   useEffect(() => {
     setOpen(false)
-    setPrepared(null)
     saveLocale(locale)
-  }, [locale, samples])
+  }, [locale])
 
   useEffect(() => {
     // Content is visible before observing; animation is only an enhancement.
@@ -121,13 +97,6 @@ export function PresentationHome() {
     elements.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
-
-  function prepare(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const message = `${t.formGreeting} ${String(data.get('name')).trim()}. ${t.detail} ${String(data.get('message')).trim()}`
-    setPrepared(contactHref(message))
-  }
 
   return (
     <div className="presentation" ref={root}>
@@ -194,16 +163,14 @@ export function PresentationHome() {
               <a className="p-button" href="#projects">
                 {t.explore} <span aria-hidden="true">↘</span>
               </a>
-              {!samples && (
-                <a
-                  className="p-text-link"
-                  href={site.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t.trajectory} ↗
-                </a>
-              )}
+              <a
+                className="p-text-link"
+                href={site.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.trajectory} ↗
+              </a>
             </div>
           </div>
           <aside className="p-profile p-reveal">
@@ -220,17 +187,14 @@ export function PresentationHome() {
                 </div>
               ))}
             </dl>
-            {!samples && (
-              <a
-                className="p-text-link"
-                href={site.github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t.source} ↗
-              </a>
-            )}
-            {samples && <p className="p-mini-note">{t.samplesNotice}</p>}
+            <a
+              className="p-text-link"
+              href={site.github}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t.source} ↗
+            </a>
           </aside>
         </section>
 
@@ -272,15 +236,9 @@ export function PresentationHome() {
                 <p>{t.demoTexts[i]}</p>
                 <div className="p-project-links">
                   <Link to={route.demoHref(slug)}>{t.openDemo} ↗</Link>
-                  {!samples && (
-                    <a
-                      href={`https://github.com/carturitos/carturitos.github.io/tree/main/landing_page/src/pages/demos${slug === 'pasteleria' ? '/miga' : ''}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t.code}
-                    </a>
-                  )}
+                  <a href={demoSourceUrl(slug)} target="_blank" rel="noreferrer">
+                    {t.code}
+                  </a>
                 </div>
                 {locale === 'en' && (
                   <small className="p-demo-language">{t.spanishDemo}</small>
@@ -288,55 +246,45 @@ export function PresentationHome() {
               </article>
             ))}
           </div>
-        </section>
-
-        <section className="p-focus" id="focus" aria-labelledby="focus-title">
-          <div className="p-container">
-            <div className="p-section-heading p-reveal">
-              <div>
-                <p className="p-eyebrow">{t.scopeEyebrow}</p>
-                <h2 id="focus-title">{t.scopeTitle}</h2>
+          <article className="p-backend p-reveal">
+            <div>
+              <p className="p-eyebrow">{t.backendLabel}</p>
+              <h3>{t.backendName}</h3>
+            </div>
+            <div>
+              <p>{t.backendText}</p>
+              <p className="p-backend-stack">{t.backendStack}</p>
+              <div className="p-project-links">
+                <a href={backendRepo} target="_blank" rel="noreferrer">
+                  {t.code} ↗
+                </a>
+                <a href={site.github} target="_blank" rel="noreferrer">
+                  {t.moreProjects}
+                </a>
               </div>
-              <p>{t.scopeText}</p>
             </div>
-            <div className="p-scope-grid">
-              {t.scopeNames.map((name, i) => (
-                <article className="p-scope p-reveal" key={name}>
-                  <span className="p-number" aria-hidden="true">
-                    0{i + 1}
-                  </span>
-                  <h3>{name}</h3>
-                  <p>{t.scopeDescriptions[i]}</p>
-                  <ul>
-                    {t.scopeLists[i].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-            <p className="p-scope-note">{t.scopeNote}</p>
-          </div>
+          </article>
         </section>
 
         <section
           className="p-container p-section"
-          id="process"
-          aria-labelledby="process-title"
+          id="experience"
+          aria-labelledby="experience-title"
         >
           <div className="p-section-heading p-reveal">
             <div>
-              <p className="p-eyebrow">{t.processEyebrow}</p>
-              <h2 id="process-title">{t.processTitle}</h2>
+              <p className="p-eyebrow">{t.experienceEyebrow}</p>
+              <h2 id="experience-title">{t.experienceTitle}</h2>
             </div>
-            <p>{t.processText}</p>
+            <p>{t.experienceText}</p>
           </div>
-          <ol className="p-process">
-            {t.steps.map((step, i) => (
-              <li className="p-reveal" key={step}>
-                <span aria-hidden="true">0{i + 1}</span>
-                <h3>{step}</h3>
-                <p>{t.stepTexts[i]}</p>
+          <ol className="p-process p-timeline">
+            {t.experience.map((item) => (
+              <li className="p-reveal" key={`${item.period}-${item.title}`}>
+                <span>{item.period}</span>
+                <h3>{item.title}</h3>
+                <p className="p-timeline-place">{item.place}</p>
+                <p>{item.text}</p>
               </li>
             ))}
           </ol>
@@ -349,27 +297,24 @@ export function PresentationHome() {
               <h2 id="about-title">{t.aboutTitle}</h2>
               <p>{t.aboutText}</p>
               <p>{t.aboutLearning}</p>
-              <p className="p-mini-note">{t.aboutAi}</p>
-              {!samples && (
-                <div className="p-actions">
-                  <a
-                    className="p-text-link"
-                    href={site.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    LinkedIn ↗
-                  </a>
-                  <a
-                    className="p-text-link"
-                    href={site.github}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    GitHub ↗
-                  </a>
-                </div>
-              )}
+              <div className="p-actions">
+                <a
+                  className="p-text-link"
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn ↗
+                </a>
+                <a
+                  className="p-text-link"
+                  href={site.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
             </div>
             <aside className="p-skills p-reveal">
               <p className="p-eyebrow">{t.skillsLabel}</p>
@@ -378,30 +323,7 @@ export function PresentationHome() {
                   <li key={skill}>{skill}</li>
                 ))}
               </ul>
-              <p className="p-mini-note">{t.skillsNote}</p>
             </aside>
-          </div>
-        </section>
-
-        <section
-          className="p-container p-section p-faq"
-          id="questions"
-          aria-labelledby="questions-title"
-        >
-          <div className="p-reveal">
-            <p className="p-eyebrow">{t.faqEyebrow}</p>
-            <h2 id="questions-title">{t.faqTitle}</h2>
-          </div>
-          <div>
-            {t.faqs.map(([question, answer], i) => (
-              <details className="p-reveal" key={`${locale}-${i}`}>
-                <summary>
-                  {question}
-                  <span aria-hidden="true">+</span>
-                </summary>
-                <p>{answer}</p>
-              </details>
-            ))}
           </div>
         </section>
 
@@ -412,77 +334,22 @@ export function PresentationHome() {
         >
           <div className="p-container p-contact-grid">
             <div className="p-reveal">
-              <p className="p-eyebrow">
-                {samples ? t.samplesEyebrow : t.contactEyebrow}
-              </p>
-              <h2 id="contact-title">
-                {samples ? t.samplesTitle : t.contactTitle}
-              </h2>
-              <p>{samples ? t.samplesText : t.contactText}</p>
-              {samples ? (
-                <PlatformAction />
-              ) : (
-                <div className="p-contact-links">
-                  <a
-                    href={contactHref(t.defaultMessage)}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t.whatsapp} ↗
-                  </a>
-                  <a href={`mailto:${site.email}`}>{t.email} ↗</a>
-                  <a href={site.linkedin} target="_blank" rel="noreferrer">
-                    LinkedIn ↗
-                  </a>
-                </div>
-              )}
-            </div>
-            {!samples && (
-              <form
-                className="p-form p-reveal"
-                onSubmit={prepare}
-                onChange={() => setPrepared(null)}
-                key={locale}
-              >
-                <label htmlFor="p-name">{t.name}</label>
-                <input
-                  id="p-name"
-                  name="name"
-                  autoComplete="name"
-                  required
-                  maxLength={100}
-                />
-                <label htmlFor="p-message">{t.message}</label>
-                <textarea
-                  id="p-message"
-                  name="message"
-                  required
-                  maxLength={2000}
-                  rows={4}
-                />
-                <button className="p-button" type="submit">
-                  {t.prepare} <span aria-hidden="true">↗</span>
-                </button>
-                <p className="p-form-note" aria-live="polite">
-                  {prepared ? t.prepared : t.formNote}
-                </p>
-                {prepared && (
-                  <a
-                    className="p-prepared-link"
-                    href={prepared}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t.whatsapp} ↗
-                  </a>
-                )}
-              </form>
-            )}
-            {samples && (
-              <div className="p-sample-symbol" aria-hidden="true">
-                s.
+              <p className="p-eyebrow">{t.contactEyebrow}</p>
+              <h2 id="contact-title">{t.contactTitle}</h2>
+              <p>{t.contactText}</p>
+              <div className="p-contact-links">
+                <a href={`mailto:${site.email}`}>{t.email} ↗</a>
+                <a href={site.linkedin} target="_blank" rel="noreferrer">
+                  LinkedIn ↗
+                </a>
+                <a href={site.github} target="_blank" rel="noreferrer">
+                  GitHub ↗
+                </a>
               </div>
-            )}
+            </div>
+            <div className="p-sample-symbol" aria-hidden="true">
+              s.
+            </div>
           </div>
         </section>
       </main>
@@ -492,16 +359,12 @@ export function PresentationHome() {
           <small>{t.footerNote}</small>
         </p>
         <div>
-          {!samples && (
-            <>
-              <a href={site.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn ↗
-              </a>
-              <a href={site.github} target="_blank" rel="noreferrer">
-                GitHub ↗
-              </a>
-            </>
-          )}
+          <a href={site.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn ↗
+          </a>
+          <a href={site.github} target="_blank" rel="noreferrer">
+            GitHub ↗
+          </a>
           <LanguageSwitch />
         </div>
       </footer>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { DemoNotice } from '../../components/DemoNotice'
-import { usePresentation } from '../../presentation/usePresentation'
+import { demoSourceUrl } from '../../presentation/usePresentation'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import './dental.css'
 
@@ -71,7 +71,6 @@ const reviews = [
 ]
 
 export function Dental() {
-  const { samples, platformHref, contactTarget, locale } = usePresentation()
   const [selectedDay, setSelectedDay] = useState(1)
 
   usePageMeta({
@@ -276,28 +275,14 @@ export function Dental() {
                 tratamiento y fecha no se envía a una agenda ni confirma una
                 hora real.
               </p>
-              {samples && !platformHref ? (
-                <button className="da-btn da-btn-light" type="button" disabled>
-                  {locale === 'en'
-                    ? 'Fiverr link not available yet'
-                    : 'Enlace a Fiverr aún no disponible'}
-                </button>
-              ) : (
-                <a
-                  className="da-btn da-btn-light"
-                  href={contactTarget(
-                    'Hola Samuel, vi la demo de Dental Aurora y quiero una web similar para mi negocio.',
-                  )}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {samples
-                    ? locale === 'en'
-                      ? 'Continue on Fiverr'
-                      : 'Continuar en Fiverr'
-                    : 'Quiero una web así'}
-                </a>
-              )}
+              <a
+                className="da-btn da-btn-light"
+                href={demoSourceUrl('dental')}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ver el código de esta demo
+              </a>
               <p className="demo-note">
                 Sitio de demostración: no agenda horas reales.
               </p>

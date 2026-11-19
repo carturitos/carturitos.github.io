@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { usePresentation } from '../../../presentation/usePresentation'
+import {
+  demoSourceUrl,
+  usePresentation,
+} from '../../../presentation/usePresentation'
 import { usePageMeta } from '../../../hooks/usePageMeta'
 import { ProductDialog } from './ProductDialog'
 import { Reveal } from './Reveal'
@@ -24,12 +27,11 @@ const HERO = {
 }
 
 export function MigaMiel() {
-  const { samples, platformHref, homeHref, contactTarget, locale } =
-    usePresentation()
+  const { homeHref } = usePresentation()
   usePageMeta({
-    title: 'Miga & Miel — Pastelería de autor | Demo de Carturitos',
+    title: 'Miga & Miel — Demo de pastelería | Samuel Gutiérrez',
     description:
-      'Tortas, cupcakes y mesas dulces por encargo. Proyecto demostrativo de diseño y desarrollo web de Carturitos.',
+      'Catálogo de pastelería con fichas de producto y formulario de consulta. Proyecto demostrativo de Samuel Gutiérrez con React y TypeScript.',
     path: '/demos/pasteleria',
     image: '/og/miga-miel.jpg',
   })
@@ -37,6 +39,7 @@ export function MigaMiel() {
   const [product, setProduct] = useState<Product | null>(null)
   const [needId, setNeedId] = useState(needOptions[0].id)
   const [picked, setPicked] = useState<Product | null>(null)
+  const [prepared, setPrepared] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileNav, setMobileNav] = useState(
     () => window.matchMedia('(max-width: 820px)').matches,
@@ -53,15 +56,13 @@ export function MigaMiel() {
 
   const message = useMemo(() => {
     const parts = [
-      `Hola Samuel, vi la demo Miga & Miel y me interesa ${need.need}.`,
+      `Hola Miga & Miel, quiero hacer un encargo para ${need.need}.`,
     ]
     if (picked)
       parts.push(`Consulta de ejemplo: ${picked.name}, ${picked.servings}.`)
-    parts.push('¿Podemos hablar del proyecto?')
+    parts.push('¿Me pueden enviar opciones y disponibilidad?')
     return parts.join(' ')
   }, [need, picked])
-
-  const waHref = contactTarget(message)
 
   useEffect(() => {
     const media = window.matchMedia('(max-width: 820px)')
@@ -251,7 +252,7 @@ export function MigaMiel() {
                   </svg>
                 </a>
                 <a className="mm-btn mm-btn-outline" href="#consultar">
-                  Quiero una web así
+                  Hacer un encargo
                 </a>
               </div>
               <p className="mm-hero-note">
@@ -475,7 +476,7 @@ export function MigaMiel() {
               <a
                 className="mm-btn mm-btn-cream"
                 href="#consultar"
-                onClick={() => setNeedId('reservas')}
+                onClick={() => setNeedId('otro')}
               >
                 Conversemos tu idea
                 <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -587,41 +588,29 @@ export function MigaMiel() {
         >
           <div className="mm-wrap mm-consulta-grid">
             <Reveal className="mm-consulta-copy">
-              <span className="mm-eyebrow mm-eyebrow-dark">
-                Sobre este proyecto
-              </span>
-              <h2 id="mm-consulta-title">
-                Tu negocio, con una web a esta altura.
-              </h2>
+              <span className="mm-eyebrow mm-eyebrow-dark">Encargos</span>
+              <h2 id="mm-consulta-title">Cuéntanos qué celebras.</h2>
               <p>
-                Miga &amp; Miel es un proyecto demostrativo de Carturitos. Si te
-                gustó cómo se ve y cómo se siente, podemos construir algo así
-                para tu negocio: catálogo, consultas y una identidad que no se
-                parezca a una plantilla.
+                Elige la ocasión y, si quieres, un producto del catálogo.
+                Preparamos tu consulta para que la revises antes de enviarla.
               </p>
               <ul className="mm-deliverables">
-                <li>Diseño a medida</li>
-                <li>Catálogo con fichas</li>
-                <li>
-                  {samples
-                    ? 'Selección de consulta de ejemplo'
-                    : 'Consultas por WhatsApp'}
-                </li>
+                <li>Tortas a medida</li>
+                <li>Mesas dulces</li>
+                <li>Cajas de regalo</li>
               </ul>
               <p className="mm-extra">
-                Esta demo muestra un catálogo de consulta. No incluye compras,
-                reservas automáticas ni panel de administración. La propuesta
-                freelance está en preparación.
+                Esta demo no envía mensajes, no procesa compras ni guarda datos.
               </p>
             </Reveal>
 
             <Reveal className="mm-consulta-card">
-              <p className="mm-form-title">¿Qué necesitas?</p>
+              <p className="mm-form-title">¿Para qué ocasión?</p>
 
               <div
                 className="mm-chips"
                 role="group"
-                aria-label="Tipo de proyecto"
+                aria-label="Ocasión"
               >
                 {needOptions.map((option) => (
                   <button
@@ -629,7 +618,10 @@ export function MigaMiel() {
                     type="button"
                     className={`mm-chip${option.id === needId ? ' is-on' : ''}`}
                     aria-pressed={option.id === needId}
-                    onClick={() => setNeedId(option.id)}
+                    onClick={() => {
+                      setNeedId(option.id)
+                      setPrepared(false)
+                    }}
                   >
                     {option.label}
                   </button>
@@ -650,46 +642,31 @@ export function MigaMiel() {
                 </p>
               )}
 
-              {samples && !platformHref ? (
-                <button
-                  className="mm-btn mm-btn-ink mm-btn-block"
-                  type="button"
-                  disabled
-                >
-                  {locale === 'en'
-                    ? 'Fiverr link not available yet'
-                    : 'Enlace a Fiverr aún no disponible'}
-                </button>
-              ) : (
-                <a
-                  className="mm-btn mm-btn-ink mm-btn-block"
-                  href={waHref}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {samples
-                    ? locale === 'en'
-                      ? 'Continue on Fiverr'
-                      : 'Continuar en Fiverr'
-                    : 'Escribir por WhatsApp'}
-                  <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <path
-                      d="M3 8h9M8.5 3.5 13 8l-4.5 4.5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.7"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
-              )}
-              <p className="mm-form-note">
-                {samples
-                  ? locale === 'en'
-                    ? 'This demo does not send messages or confirm orders.'
-                    : 'Esta demo no envía mensajes ni confirma pedidos.'
-                  : 'Abre WhatsApp con la consulta escrita. No es una compra a Miga & Miel y no se guardan datos en este sitio.'}
+              <button
+                className="mm-btn mm-btn-ink mm-btn-block"
+                type="button"
+                onClick={() => setPrepared(true)}
+              >
+                Preparar consulta
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path
+                    d="M3 8h9M8.5 3.5 13 8l-4.5 4.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <p className="mm-form-note" aria-live="polite">
+                {prepared ? (
+                  <>
+                    <strong>Vista previa:</strong> {message}
+                  </>
+                ) : (
+                  'Demostración: la consulta se muestra aquí y no se envía.'
+                )}
               </p>
             </Reveal>
           </div>
@@ -703,8 +680,8 @@ export function MigaMiel() {
               miga <i>&amp;</i> miel
             </span>
             <p>
-              Proyecto conceptual de Carturitos. Diseño y desarrollo: Samuel
-              Gutiérrez. Las piezas, precios y textos son ilustrativos.
+              Proyecto demostrativo. Diseño y desarrollo: Samuel Gutiérrez.
+              Las piezas, precios y textos son ilustrativos.
             </p>
           </div>
 
@@ -717,14 +694,16 @@ export function MigaMiel() {
 
           <nav className="mm-foot-nav" aria-label="Proyecto">
             <span>Proyecto</span>
-            <a href="#consultar">Quiero una web así</a>
-            <Link to={`${homeHref}#projects`}>Carturitos</Link>
+            <a href={demoSourceUrl('pasteleria')} target="_blank" rel="noreferrer">
+              Ver el código
+            </a>
+            <Link to={`${homeHref}#projects`}>Portafolio</Link>
           </nav>
         </div>
 
         <div className="mm-wrap mm-foot-legal">
           <p>© {new Date().getFullYear()} Miga &amp; Miel · demostración</p>
-          <p>Carturitos · carturitos.github.io</p>
+          <p>Samuel Gutiérrez · carturitos.github.io</p>
         </div>
       </footer>
 
@@ -734,10 +713,10 @@ export function MigaMiel() {
         inert={!(barVisible || picked) || menuOpen}
       >
         <span>
-          {picked ? `Consulta · ${picked.name}` : '¿Quieres una web así?'}
+          {picked ? `Consulta · ${picked.name}` : '¿Tienes una celebración?'}
         </span>
         <a className="mm-btn mm-btn-coral mm-btn-sm" href="#consultar">
-          Hablemos
+          Consultar
         </a>
       </div>
 

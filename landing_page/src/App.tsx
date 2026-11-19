@@ -54,7 +54,7 @@ const demos = [
   { slug: 'dental', element: <Dental /> },
   { slug: 'pasteleria', element: <MigaMiel /> },
 ]
-const bases = ['/es', '/en', '/muestras/es', '/muestras/en']
+const bases = ['/es', '/en']
 export default function App() {
   const { pathname } = useLocation()
   const { locale } = routeDetails(pathname)

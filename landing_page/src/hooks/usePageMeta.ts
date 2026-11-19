@@ -44,7 +44,7 @@ export function usePageMeta({
   noindex = false,
 }: PageMetaOptions): void {
   const { pathname } = useLocation()
-  const { locale, channel } = routeDetails(pathname)
+  const { locale } = routeDetails(pathname)
   const effectivePath = noindex ? path : pathname
   useEffect(() => {
     const url = `${site.url}${effectivePath}`
@@ -98,7 +98,7 @@ export function usePageMeta({
     const robots = document.head.querySelector<HTMLMetaElement>(
       'meta[name="robots"]',
     )
-    if (noindex || channel === 'samples') {
+    if (noindex) {
       upsertMeta('name', 'robots', 'noindex, follow')
     } else if (robots) {
       robots.remove()
@@ -111,6 +111,5 @@ export function usePageMeta({
     image,
     noindex,
     locale,
-    channel,
   ])
 }

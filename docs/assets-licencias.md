@@ -38,8 +38,7 @@ calidad 80. No se altera el contenido de la escena.
 ### Archivos publicados
 
 Los originales viven en `landing_page/public/photos/miga-miel/` con dos anchos por imagen
-(`nombre.webp` y `nombre-sm.webp`) para el `srcset`. El mockup conserva una copia en
-`docs/mockups/miga-miel/assets/photos/`.
+(`nombre.webp` y `nombre-sm.webp`) para el `srcset`.
 
 | En el sitio | Equivale a |
 | --- | --- |
